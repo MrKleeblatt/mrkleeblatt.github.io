@@ -19,15 +19,14 @@ Die Programmiersprache fourfoil dient innerhalb der fourfoil-Technologie vor all
 Die Sprache ist vor allem dazu da, mit wenig Text, aber dennoch anschaulich und leicht verständlich, kurze Berechnungen, aber auch komplexe Programme ausführen zu können.
 Sie soll Anwendung in der Frontend-Webentwicklung, aber auch in der Spieleentwicklung finden.
 
-Der Name der Sprache leitet sich von englisch "four foil" ab, was "vierblättriges Kleeblatt" bedeutet und eine Anspielung auf den Künstlernamen des Hauptentwicklers @MrKleeblatt ist.
+Der Name der Sprache leitet sich von englisch *four foil* ab, was "vierblättriges Kleeblatt" bedeutet und eine Anspielung auf den Künstlernamen des Hauptentwicklers @MrKleeblatt ist.
 
 Verschiedene Dateiendungen lassen sich mit fourfoil assoziieren:
 - ``4f`` ist die standardmäßige Dateiendung, die ein in fourfoil geschriebenes Programm signalisiert
 - ``4fon`` ist ein der ``json``-Dateiendung ähnliches Format, welches ausschließlich ein 4fon-Objekt enthält
-- ``4fweb`` ist quasi wie html.
-- ``nbt``
+- ``nbt`` ist ein von @Notch (Markus Persson) entwickeltes Dateiformat, von @MrKleeblatt erweitert und verfeinert. Die Abkürzung steht für *named binary tag* und mittlerweile gibt es einen gesamten [wiki-Eintrag ]
 
-```json
+```
 {
   name: "iCh BiN lUsTiG"
   Attribut_mit_Unterstrich: 42
