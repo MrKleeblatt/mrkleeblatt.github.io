@@ -11,9 +11,12 @@ Der Name der Sprache leitet sich von englisch _four foil_ ab, was "vierblättrig
 
 ...lassen sich mit fourfoil assoziieren:<br/>
 
--   `4f` ist die standardmäßige Dateiendung, die ein in fourfoil geschriebenes Programm signalisiert ▶ **Programmdatei**
--   `4fon` ist ein der `json`-Dateiendung ähnliches Format, welches ausschließlich ein 4fon-Objekt enthält ▶ **Objektnotation**
--   `nbt` ist ein von @Notch (Markus Persson) entwickeltes Dateiformat, von @MrKleeblatt erweitert und verfeinert. Die Abkürzung steht für _named binary tag_ und mittlerweile gibt es einen gesamten [wiki-Eintrag](https://wiki.vg/NBT) darüber. Im Gegensatz zum in Minecraft genutzten nbt-Format kann in dem in fourfoil genutzten Format auch der root-compound-tag weggelassen werden. ▶ **Objektnotation**
+-   `4f` ist die standardmäßige Dateiendung, die ein in fourfoil geschriebenes Programm signalisiert<br/>
+▶ **Programmdatei**
+-   `4fon` ist ein der `json`-Dateiendung ähnliches Format, welches ausschließlich ein 4fon-Objekt enthält<br/>
+▶ **Objektnotation**
+-   `nbt` ist ein von @Notch (Markus Persson) entwickeltes Dateiformat, von @MrKleeblatt erweitert und verfeinert. Die Abkürzung steht für _named binary tag_ und mittlerweile gibt es einen gesamten [wiki-Eintrag](https://wiki.vg/NBT) darüber. Im Gegensatz zum in Minecraft genutzten nbt-Format kann in dem in fourfoil genutzten Format auch der root-compound-tag weggelassen werden.<br/>
+▶ **Objektnotation** bzw. **Package-Information**
 
 ### Das Alphabet
 
