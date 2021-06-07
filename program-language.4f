@@ -1,34 +1,4 @@
-//
-//  ---> Sprachname  = FourFoil (=>vierblättriges Kleeblatt)
-//  ---> Dateiendungen =
-//        .4f = Quellcode
-//        .4fc  = Klasse
-//        .4fi  = Interface
-//  ---> Bester Editor zum Coden in 4foil: Atom -> Package muss noch erstellt werden (IDE, aber auch Linter-extension)
-//            -> Language Support; auto-complete; GetData-Konsole, in der man Daten mal schnell auslesen kann
-//               (z.B.: "x=?", "unicode €" oder "unicode search "Euro")
-//            -> Wenn man eine bestimmte Tastenkombination drückt, soll sich ein Bild öffnen, in dem man sehen kann, wer wie von was erbt (UML?),
-//               wobei Interfaces, Klassen und Programmdateien verschiedenfarbig gekennzeichnet werden sollen.m
-//  ---> Gesamte Sprache wird in Englisch erstellt, Compiler auch in Englisch (international verwendbar)
-//  ---> Das Alphabet der Sprache:
-//          qwertzuiopasdfghjklyxcvbnm1234567890 !"§$%&/()=?{[]}\°^<>|,.;:-_+*~#'
-//  ---> Die Wörter der Sprache:
-//        import fun object var class delete return switch case if else for while do try catch foreach byte boolean char short int long float
-//        double enum public private parent final null System 4f const bit other unless list table Interface implements skip
-//        Exception throw throws ignore
-//  ---> Vordefinierte Klassen und .4f-Dateien vorhanden (also auch Funktionen)
-//
-//
-//  Kommentare werden mit "//" gemacht. Alles, was danach in der Zeile kommt, ignoriert der Comiler. Wenn man in Kommentaren etwas fett,
-//    unterstrichen oder kursiv schreiben will, kann man die Zeichen aus Discord nutzen. Wenn der Cursor auf dem Wort landet, erscheinen
-//    die Zeichen, die man um das Wort herum geschrieben hat. Wenn der Cursor von der Stelle weg geht, wird die Schrift formatiert und die
-//    Zeichen unsichtbar. --> siehe ganz unten dieser Datei
-//  Codeblöcke können durch geschweifte Klammern umrandet werden, damit sie von Atom eingeklappt werden können. Syntax: ```_Beschreibung_{}```
-//  Dateien können mit Funktionen, Interfaces, Enums oder Klassen beginnen. Das Erstellen von Klassen ist kein Muss.
-//  Zu Beginn der Datei wird das Package der Sprache genannt. Syntax: ```package <package>``` Alternativ kann eine "pack.nbt"-Datei
-//    erstellt werden, in welcher genauere Informationen (z.B. auch die Code-Version) stehen. Es wir im nbt-Format angegeben, wobei
-//    auch einfach leere {}-Klammern reichen würden.
-//  Vordefinierte Klassen, Daten und 4f-Dateien werden am Anfang der Datei importiert. Syntax: ```import class <path> as <name>```
+ Syntax: ```import class <path> as <name>```
 //    bzw. ```import 4f <path> as <name>``` bzw. ```import data <path> as <name>```
 //    Hierbei sind 4f-Dateien Quellcode im .fourfoil-Format, die keine Klassen sind, Daten hingegen
 //    sind reine Daten z.B. im .json-Format oder im nbt-Format.
@@ -302,7 +272,5 @@ Notiz:
 
    In der Library FourFoils sollen Kindklassen immer in einem Ordner sein, der den gleichen Namen trägt wie ihre Elternklasse. Diese Elternklasse soll im gleichen Ordner sein wie der gleichnamige Ordner. Dadurch lässt sich nachvollziehen, von wem geerbt wird.
 
-   In Atom soll man fett schreiben können. Dazu schreibt man vor und nach das jeweilige Wort **wort** für fett, __wort__ für unterstrichen oder
-   --wort-- für kursiv. Diese Zeichen werden nur angezeigt, wenn man mit dem Cursor auf dem Wort ist, ansonsten wird das Wort fett usw dargestellt.
    Imports werden standartmäßig grau dargestellt, außer, sie werden nicht genutzt, dann sind sie auch noch durchgestrichen.
    Wenn eine Variable erstellt, aber nicht genutzt wird, wird sie grau dargestellt
