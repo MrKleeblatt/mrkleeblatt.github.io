@@ -6,6 +6,3 @@ Codeblöcke können durch geschweifte Klammern umrandet werden, damit sie von At
 Dateien können mit Funktionen, Interfaces, Enums oder Klassen beginnen. Das Erstellen von Klassen ist kein Muss.  
 Zu Beginn der Datei wird das Package der Sprache genannt. Syntax: `package einsPackage` Alternativ kann eine "pack.nbt"-Datei erstellt werden, in welcher genauere Informationen (z.B. auch die Code-Version) stehen. Es wir im nbt-Format angegeben, wobei auch einfach leere {}-Klammern reichen würden.  
 Packages, Daten und 4f-Dateien werden am Anfang der Datei importiert. Syntax: `import com.ein.package` bzw. wenn man das Package / Objekt / die Variable direkt einer Variable zuordnen will `import variable = com.ein.package`. Sie können später im Code über die Objektvariable abgerufen werden.
-
-bzw. ```import 4f <path> as <name>``` bzw. ```import data <path> as <name>```  
-Hierbei sind 4f-Dateien Quellcode im .fourfoil-Format, die keine Klassen sind, Daten hingegen sind reine Daten z.B. im .json-Format oder im nbt-Format.
