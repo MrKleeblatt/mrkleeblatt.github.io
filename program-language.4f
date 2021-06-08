@@ -1,7 +1,4 @@
- Syntax: ```import class <path> as <name>```
-//    bzw. ```import 4f <path> as <name>``` bzw. ```import data <path> as <name>```
-//    Hierbei sind 4f-Dateien Quellcode im .fourfoil-Format, die keine Klassen sind, Daten hingegen
-//    sind reine Daten z.B. im .json-Format oder im nbt-Format.
+
 //  Variablen werden mit dem Schlüsselwort "var" erstellt. Der Name muss mit einem '§'  beginnen.
 //    Syntax:  ```var <prim.datatype> §<name> = <value>``` bzw. ```var <prim.datatype> §<name>```
 //    Allerdings kann man Variablen auch als Konstanten definieren. Dafür kann man wie in C ganz am Anfang des Codes
