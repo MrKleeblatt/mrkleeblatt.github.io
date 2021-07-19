@@ -167,9 +167,13 @@ try { <code> } catch() { <code> }
 //  Operatoren zur Manipulation von Bits: Umkehrung (!), Und (&), Oder (|)
 //    Linksverschiebung (>>) [0b11101110 = 0b10111011 >> 2], Rechtsverschiebung (<<)
 //  Vergleiche: gleich (==), ungleich (!=), kleiner als (<), größer als (>), kleiner gleich (<=), größer gleich (>=), exakt gleich (===),
-//    konvertiert gleich (=convert=), exakt ungleich (!==), konvertiert ungleich (!convert=)
+//    konvertiert gleich (~=), exakt ungleich (!==), konvertiert ungleich (!~=)
 //    --> Der Unterschied zwischen gleich und exakt gleich ist, dass bei einem Objekt der Vergleich "==" auf den Inhalt, der "==="
-//        jedoch auf die Referenz prüft. "=convert=" würde auch bei ``5 =convert= "5"`` true zurückgeben.
+//        jedoch auf die Referenz prüft. "~=" würde auch bei ``5 ~= "5"`` true zurückgeben.
+``5 == 5`` => true
+``5 === 5`` => true
+``object1 == clone1`` => true
+``object1 === clone1`` => false
 //  Weitere Operatoren:
 //    von-bis (x:y) <--liefert ein Array zurück mit den Zahlen der Ganzzahlenreihe von x bis y. x und y müssen int sein.
 //
