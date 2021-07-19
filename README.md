@@ -7,7 +7,7 @@ Die Programmiersprache fourfoil dient innerhalb der fourfoil-Technologie vor all
 
 Die Sprache ist vor allem dazu da, mit wenig Text, aber dennoch anschaulich und leicht verständlich, kurze Berechnungen, aber auch komplexe Programme ausführen zu können. Sie soll Anwendung in der *Frontend-Webentwicklung*, aber auch in der *Spieleentwicklung* finden.  
 
-Der Name der Sprache leitet sich von englisch *four foil* ab, was "vierblättriges Kleeblatt" bedeutet und eine Anspielung auf den Künstlernamen des Hauptentwicklers [MrKleeblatt](https://www.github.com/MrKleeblatt) ist.  
+Der Name der Sprache leitet sich von englisch *four foil* ab, was "vierblättriges Kleeblatt" bedeutet und eine Anspielung auf den Künstlernamen des Hauptentwicklers @MrKleeblatt [MrKleeblatt](https://www.github.com/MrKleeblatt) ist.  
 
 ### Das Alphabet
 Das Alphabet der Sprache sieht wie folgt aus:
