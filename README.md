@@ -10,7 +10,7 @@ Die Sprache ist vor allem dazu da, mit wenig Text, aber dennoch anschaulich und 
 Der Name der Sprache leitet sich von englisch *four foil* ab, was "vierblättriges Kleeblatt" bedeutet und eine Anspielung auf den Künstlernamen des Hauptentwicklers @MrKleeblatt [MrKleeblatt](https://www.github.com/MrKleeblatt) ist.  
 
 ### Das Alphabet
-Das Alphabet der Sprache sieht wie folgt aus:
+Das Alphabet der Sprache besteht aus:  
 `qwertzuiopasdfghjklyxcvbnm1234567890 !"§$%&/()=?{[]}\°^<>|,.;:-_+*~#'`
 
 ### Reservierte Wörter
