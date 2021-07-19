@@ -19,89 +19,77 @@ Das Alphabet der Sprache sieht wie folgt aus:
 
 Reservierte Wörter der Sprache sind:
 
--   import
--   fun
--   object
--   var
--   class
--   delete
--   return
--   switch
--   case
--   if
--   else
--   for
--   while
--   do
--   try
--   catch
--   foreach
--   byte
--   boolean
--   char
--   short
--   int
--   long
--   float
--   double
--   enum
--   public
--   private
--   parent
--   final
--   null
--   System
--   4f
--   const
--   bit
--   other
--   unless
--   list
--   table
--   Interface
--   implements
--   skip
--   Exception
--   throw
--   throws
--   ignore
+- import
+- fun
+- object
+- var
+- class
+- delete
+- return
+- switch
+- case
+- if
+- else
+- for
+- while
+- do
+- try
+- catch
+- foreach
+- byte
+- boolean
+- char
+- short
+- int
+- long
+- float
+- double
+- enum
+- public
+- private
+- parent
+- final
+- null
+- System
+- 4f
+- const
+- bit
+- other
+- unless
+- list
+- table
+- Interface
+- implements
+- skip
+- Exception
+- throw
+- throws
+- ignore
+- lambda
 
 ### Verschiedene Dateiendungen
 
 ...lassen sich mit fourfoil assoziieren.  
 Nähere Informationen gibt es auf der Seite _[Dateiformate](website/Dateiformate.md)_.
 
--   `4f` ist die standardmäßige Dateiendung, die ein in fourfoil geschriebenes Programm signalisiert  
+- `4f` ist die standardmäßige Dateiendung, die ein in fourfoil geschriebenes Programm signalisiert  
 ▶ **Programmdatei**
--   `4fon` ist ein der `json`-Dateiendung ähnliches Format, welches ausschließlich ein 4fon-Objekt enthält  
+- `4fon` ist ein der `json`-Dateiendung ähnliches Format, welches ausschließlich ein 4fon-Objekt enthält  
 ▶ **Objektnotation**
--   `nbt` ist ein von @Notch (Markus Persson) entwickeltes Dateiformat, von @MrKleeblatt erweitert und verfeinert. Die Abkürzung steht für _named binary tag_ und mittlerweile gibt es einen gesamten [wiki-Eintrag](https://wiki.vg/NBT) darüber. Im Gegensatz zum in Minecraft genutzten nbt-Format kann in dem in fourfoil genutzten Format auch der root-compound-tag weggelassen werden.  
+- `nbt` ist ein von @Notch (Markus Persson) entwickeltes Dateiformat, von @MrKleeblatt erweitert und verfeinert. Die Abkürzung steht für _named binary tag_ und mittlerweile gibt es einen gesamten [wiki-Eintrag](https://wiki.vg/NBT) darüber. Im Gegensatz zum in Minecraft genutzten nbt-Format kann in dem in fourfoil genutzten Format auch der root-compound-tag weggelassen werden.  
 ▶ **Objektnotation** bzw. **Package-Information**
 
 ### Geplant für den Language-support
 
 ...in Atom, VSCode und IntelliJ sind:
 
--   auto-complete
--   Debugger
--   Package-Manager bzw. Build-Management-Tool
--   get-data-Konsole, in der man Daten mal schnell auslesen kann (z.B.: `$x`(liefert alle Infos über die Variable $x), `unicode €` (gibt den Unicode zum Eurozeichen) oder `unicode search Euro` (gibt alle Suchergebnisse zum Unicodezeichen "€")
--   Wenn man eine bestimmte Tastenkombination drückt, soll sich ein Bild öffnen, in dem man sehen kann, wer wie von was erbt (UML?), wobei Interfaces, Klassen und Programmdateien verschiedenfarbig gekennzeichnet werden sollen.
+- auto-complete
+- Debugger
+- Package-Manager bzw. Build-Management-Tool
+- get-data-Konsole, in der man Daten mal schnell auslesen kann (z.B.: `$x`(liefert alle Infos über die Variable $x), `unicode €` (gibt den Unicode zum Eurozeichen) oder `unicode search Euro` (gibt alle Suchergebnisse zum Unicodezeichen "€")
+- Wenn man eine bestimmte Tastenkombination drückt, soll sich ein Bild öffnen, in dem man sehen kann, wer wie von was erbt (UML?), wobei Interfaces, Klassen und Programmdateien verschiedenfarbig gekennzeichnet werden sollen.
 
 ## Die Dokumentation
-- zur **Syntax** findest du **[hier](website/Syntax.md)**
+- zur **Syntax** finden Sie **[hier](website/Syntax.md)**
 - zu in fourfoil genutzten **Dateiendungen** finden Sie **[hier](website/Dateiformate.md)**
 - zu Klassen, Methoden und Objekten des **4fdk** finden Sie **[hier](website/4fdk.md)**
-
-
-
-- [x] @MrKleeblatt, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x]  list syntax required (any unordered or ordered list supported)
-- [x]  this is a complete item
-- [ ]  this is an incomplete item
-
-16c999e8c71134401a78d4d46435517b2271d6ac
-mojombo@16c999e8c71134401a78d4d46435517b2271d6ac
-mojombo/github-flavored-markdown@16c999e8c71134401a78d4d46435517b2271d6ac
-
-:joy: :joy:
