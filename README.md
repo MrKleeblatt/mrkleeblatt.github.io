@@ -1,21 +1,23 @@
 # fourfoil
 
-...ist eine *objektorientierte Programmiersprache*.
-Das Development Kit selbst umfasst den *Compiler* und die mitgelieferten Bibliotheken. fourfoil kann durch den mitgelieferten Compiler in Java-Bytecode kompiliert werden, der dann von der JVM ausgeführt werden kann, oder direkt in eine ausführbare .exe-Datei unter Windows kompiliert werden.
-Die Programmiersprache fourfoil dient innerhalb der fourfoil-Technologie vor allem zum Formulieren von Programmen. Diese liegen zunächst als reiner, menschenverständlicher Text vor, dem sogenannten *Quellcode*. Dieser Quellcode ist nicht direkt ausführbar, erst der fourfoil-Compiler, der Teil des Entwicklungswerkzeugs ist, übersetzt ihn in den maschinenverständlichen *Java-Bytecode* bzw. *Maschinencode*.  
-Die Sprache ist vor allem dazu da, mit wenig Text, aber dennoch anschaulich und leicht verständlich, kurze Berechnungen, aber auch komplexe Programme ausführen zu können.  
-Sie soll Anwendung in der *Frontend-Webentwicklung*, aber auch in der *Spieleentwicklung* finden.  
-Der Name der Sprache leitet sich von englisch _four foil_ ab, was "vierblättriges Kleeblatt" bedeutet und eine Anspielung auf den Künstlernamen des Hauptentwicklers @MrKleeblatt ist.  
+fourfoil ist eine *objektorientierte Programmiersprache*.
+Das Development Kit selbst umfasst den *Compiler* und die mitgelieferten Bibliotheken. fourfoil kann durch den mitgelieferten Compiler in Java-Bytecode, der dann von der JVM ausgeführt werden kann, oder direkt in eine ausführbare .exe-Datei unter Windows kompiliert werden.  
+
+Die Programmiersprache fourfoil dient innerhalb der fourfoil-Technologie vor allem zum Formulieren von Programmen. Diese liegen zunächst als reiner, menschenverständlicher Text vor, dem sogenannten *Quellcode*. Dieser Quellcode ist nicht direkt ausführbar, erst der fourfoil-Compiler, der Teil des Entwicklungswerkzeugs ist, übersetzt ihn in den maschinenverständlichen *Maschinencode* bzw. *Java-Bytecode*.  
+
+Die Sprache ist vor allem dazu da, mit wenig Text, aber dennoch anschaulich und leicht verständlich, kurze Berechnungen, aber auch komplexe Programme ausführen zu können. Sie soll Anwendung in der *Frontend-Webentwicklung*, aber auch in der *Spieleentwicklung* finden.  
+
+Der Name der Sprache leitet sich von englisch _four foil_ ab, was "vierblättriges Kleeblatt" bedeutet und eine Anspielung auf den Künstlernamen des Hauptentwicklers [MrKleeblatt](https://www.github.com/MrKleeblatt) ist.  
 
 
 ### Das Alphabet
 
-...der Sprache sieht wie folgt aus:
+Das Alphabet der Sprache sieht wie folgt aus:
 `qwertzuiopasdfghjklyxcvbnm1234567890 !"§$%&/()=?{[]}\°^<>|,.;:-_+*~#'`
 
 ### Reservierte Wörter
 
-...der Sprache sind:
+Reservierte Wörter der Sprache sind:
 
 -   import
 -   fun
@@ -90,3 +92,10 @@ Nähere Informationen gibt es auf der Seite _[Dateiformate](website/Dateiformate
 - zur **Syntax** findest du **[hier](website/Syntax.md)**
 - zu in fourfoil genutzten **Dateiendungen** finden Sie **[hier](website/Dateiformate.md)**
 - zu Klassen, Methoden und Objekten des **4fdk** finden Sie **[hier](website/4fdk.md)**
+
+
+
+- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
