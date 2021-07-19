@@ -7,16 +7,13 @@ Die Programmiersprache fourfoil dient innerhalb der fourfoil-Technologie vor all
 
 Die Sprache ist vor allem dazu da, mit wenig Text, aber dennoch anschaulich und leicht verständlich, kurze Berechnungen, aber auch komplexe Programme ausführen zu können. Sie soll Anwendung in der *Frontend-Webentwicklung*, aber auch in der *Spieleentwicklung* finden.  
 
-Der Name der Sprache leitet sich von englisch _four foil_ ab, was "vierblättriges Kleeblatt" bedeutet und eine Anspielung auf den Künstlernamen des Hauptentwicklers [MrKleeblatt](https://www.github.com/MrKleeblatt) ist.  
-
+Der Name der Sprache leitet sich von englisch *four foil* ab, was "vierblättriges Kleeblatt" bedeutet und eine Anspielung auf den Künstlernamen des Hauptentwicklers [MrKleeblatt](https://www.github.com/MrKleeblatt) ist.  
 
 ### Das Alphabet
-
 Das Alphabet der Sprache sieht wie folgt aus:
 `qwertzuiopasdfghjklyxcvbnm1234567890 !"§$%&/()=?{[]}\°^<>|,.;:-_+*~#'`
 
 ### Reservierte Wörter
-
 Reservierte Wörter der Sprache sind:
 
 - import
@@ -68,7 +65,6 @@ Reservierte Wörter der Sprache sind:
 - lambda
 
 ### Verschiedene Dateiendungen
-
 ...lassen sich mit fourfoil assoziieren.  
 Nähere Informationen gibt es auf der Seite _[Dateiformate](website/Dateiformate.md)_.
 
@@ -80,7 +76,6 @@ Nähere Informationen gibt es auf der Seite _[Dateiformate](website/Dateiformate
 ▶ **Objektnotation** bzw. **Package-Information**
 
 ### Geplant für den Language-support
-
 ...in Atom, VSCode und IntelliJ sind:
 
 - auto-complete
