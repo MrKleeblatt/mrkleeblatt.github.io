@@ -275,3 +275,16 @@ Notiz:
 
    Imports werden standartmäßig grau dargestellt, außer, sie werden nicht genutzt, dann sind sie auch noch durchgestrichen.
    Wenn eine Variable erstellt, aber nicht genutzt wird, wird sie grau dargestellt
+
+
+Multithreading:
+  Threads können wie in Java entweder über `extends Thread` oder über anonyme Klassen erstellt werden. Hierbei müssen in jedem Fall die
+   `load()`- und die `tick()`-Methode überschrieben werden. `load()` wird beim Starten des Threads einmalig ausgeführt, `tick()` dauerhaft.
+   Gestartet werden Threads durch `thread.start()`, beendet durch `thread.close()`. Man kann auf die Fertigstellung eines Threads immer mit
+   `thread.await()` warten, oder vor die Start-Methode ein `await` setzen (Sinn? Keine Ahnung.)
+
+
+
+
+Um Text vor dem Compilen zu ersetzen, kann man "define" verwenden. Im Gegensatz zu "const" ist define nur
+eine Ersetzung, also ist der Datentyp vollkommen Wurst.
