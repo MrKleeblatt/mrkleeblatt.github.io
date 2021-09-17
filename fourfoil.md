@@ -49,5 +49,3 @@ Nähere Informationen gibt es auf der Seite _[Dateiformate](dateiformate/dateifo
 - zur **Syntax** finden Sie **[hier](syntax.md)**
 - zu in fourfoil genutzten **Dateiendungen** finden Sie **[hier](dateiformate/)**
 - zu Klassen, Methoden und Objekten des **4fdk** finden Sie **[hier](fdk.md)**
-
-echo '# hello world' >> index.md
