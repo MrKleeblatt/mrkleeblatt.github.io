@@ -1,2 +1,2 @@
 Hallo ;)
-(ff)[fourfoil.md]
+[fourfoil.md](fourfoil.md)
