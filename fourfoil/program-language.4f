@@ -68,8 +68,8 @@ delete lustig
 
 
 //
-//  Funktionen werden mit dem Schlüsselwort "fun" erstellt. Syntax: ```fun <sichtb.mod.> <Object>.<name>(<Parameter>){<inhalt>}```
-//    bzw. ```fun <name>(){<inhalt>}```
+//  Funktionen werden mit dem Schlüsselwort "fun" erstellt. Syntax: ```fun <sichtb.mod.> <Object>.<name>(<Parameter>) = {<inhalt>}```
+//    bzw. ```fun <name>() = {<inhalt>}```
 //  Sichtbarkeitsmodifizierer sind die gleichen wie in Java
 //  Wenn eine Funktion, eine variable, eine Klasse oder sonst irgendwas von einem Objekt abhängig ist, wird ein "Object." davorgeschieben.
 //		Sollte die Klasse des zu behandelnden Objektes bereits feststehen, wird anstatt Object die jeweilige Klasse eingetragen
@@ -253,7 +253,7 @@ Notiz:
 
    In 4foil sollen Dateien viel besser verarbeitet werden können als in Java (die Dateiverarbeitung ist da halt einfach Müll). Hierzu gibt es die Klasse "File", in der Funktionen zum Lesen, Schreiben, Umbenennen, Verschieben, Erstellen und Löschen von Dateien sind. Außerdem gibt es boolean-Funktionen zum Überprüfen z.B. der Länge der in der Datei gespeicherten Zeichen, der Größe der Datei, und viele andere has...-Funktionen. Funktionen anderer primitiver Datentypen sind auch vorhanden, so z.B. vom Typen int, wenn man die Stelle eines bestimmten Zeichens haben will:
 
-      fun public Car.getCharPos(char toFind){
+      fun Car.getCharPos(char toFind) public = {
 
          array char temp[] = this.toCharArray()
          list int charPos
@@ -267,7 +267,7 @@ Notiz:
       }
 
    In einem String soll ein Zeilenumbruch klar erkennbar sein. Sollte eine Datei eingelesen und in einen String umgewandelt werden, wird ein Zeilenumbruch in den String übernommen, und nicht, wie in Java, ignoriert!
-   Strings sind standartmäßig ohne Formatierung in Unicode-codes. Sollte man einen formatierten String haben wollen, schreibt man vor die "" ein f. Syntax: ```var String §str = f"test"``` bzw. ```var String str = f "test"```
+   Strings sind standartmäßig ohne Formatierung in Unicode-codes. Sollte man einen formatierten String haben wollen, schreibt man vor die "" ein f. Syntax: ```var String §str = f"test"``` bzw. ```var String str = f"test"```
 
    Im Atom-Package soll Autocomplete vorhanden sein. Wenn man eine neue Klasse erstellt, sollen direkt alle Funktionen, die überschrieben werden müssen, aufgeschrieben werden.
 
@@ -288,3 +288,14 @@ Multithreading:
 
 Um Text vor dem Compilen zu ersetzen, kann man "define" verwenden. Im Gegensatz zu "const" ist define nur
 eine Ersetzung, also ist der Datentyp vollkommen Wurst.
+
+synchronized {}
+synchronized () {}
+
+Variablen sind nicht gleich ihrem Wert. In FourFoil wird eine Variable bzw. ihre Referenz/Pointer mit dem
+Variablennamen angegeben, ihr Wert jedoch mit einem "$variablenName".
+
+
+In einem Block kann ein Namespace dauerhaft angesprochen werden, was besonders nützlich für Webentwicklung ist. Sollte man dies in einem Objekt-Kontext verwenden, muss bei jeder Objekt-Methode ``this.`` davorgesetzt werden.
+
+Referenzen sind in fourfoil ein eigener Typ, also weder Objekt, noch Variable, noch Array oder Funktion. Sie werden als "ref" angegeben. Syntax: ```ref name = eine_Variable_oder_sonst_was_xD```

@@ -1,9 +1,9 @@
 # fourfoil
 
 fourfoil ist eine *objektorientierte Programmiersprache*.
-Das Development Kit selbst umfasst den *Compiler* und die mitgelieferten Bibliotheken. fourfoil kann durch den mitgelieferten Compiler in Java-Bytecode, der dann von der JVM ausgeführt werden kann, oder direkt in eine ausführbare .exe-Datei unter Windows kompiliert werden.  
+Das Development Kit selbst umfasst den *Compiler* und die mitgelieferten Bibliotheken. fourfoil kann durch den mitgelieferten Compiler in eine ausführbare .exe-Datei unter Windows kompiliert werden ( Unterstützung für weitere Betriebssysteme folgt), oder vom fourfoil-Interpreter interpretiert werden. Alternativ kann die Sprache, sollte sie zur Webentwicklung genutzt werden, in WebAssembly kompiliert werden. Dabei stehen jedoch nicht alle Funktionen zur Verfügung.   
 
-Die Programmiersprache fourfoil dient innerhalb der fourfoil-Technologie vor allem zum Formulieren von Programmen. Diese liegen zunächst als reiner, menschenverständlicher Text vor, dem sogenannten *Quellcode*. Dieser Quellcode ist nicht direkt ausführbar, erst der fourfoil-Compiler, der Teil des Entwicklungswerkzeugs ist, übersetzt ihn in den maschinenverständlichen *Maschinencode* bzw. *Java-Bytecode*.  
+Die Programmiersprache fourfoil dient innerhalb der fourfoil-Technologie vor allem zum Formulieren von Programmen. Diese liegen zunächst als reiner, menschenverständlicher Text vor, dem sogenannten *Quellcode*. Dieser Quellcode ist nicht direkt ausführbar, erst der fourfoil-Compiler, der Teil des Entwicklungswerkzeugs ist, übersetzt ihn in den maschinenverständlichen *Maschinencode* bzw. wird er vom fourfoil-Interpreter interpretiert.  
 
 Die Sprache ist vor allem dazu da, mit wenig Text, aber dennoch anschaulich und leicht verständlich, kurze Berechnungen, aber auch komplexe Programme ausführen zu können. Sie soll Anwendung in der *Frontend-Webentwicklung*, aber auch in der *Spieleentwicklung* finden.  
 
