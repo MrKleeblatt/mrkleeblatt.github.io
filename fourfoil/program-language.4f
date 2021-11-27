@@ -299,3 +299,19 @@ Variablennamen angegeben, ihr Wert jedoch mit einem "$variablenName".
 In einem Block kann ein Namespace dauerhaft angesprochen werden, was besonders nützlich für Webentwicklung ist. Sollte man dies in einem Objekt-Kontext verwenden, muss bei jeder Objekt-Methode ``this.`` davorgesetzt werden.
 
 Referenzen sind in fourfoil ein eigener Typ, also weder Objekt, noch Variable, noch Array oder Funktion. Sie werden als "ref" angegeben. Syntax: ```ref name = eine_Variable_oder_sonst_was_xD```
+
+
+switch-case soll viel einfacher und logischer sein als in C. Die Syntax sieht wie folgt aus:
+  ```
+  switch(<variable>){
+    case(<value>) expr()
+    case(<value>){
+      expr()
+      expr()
+      case(<value>)
+    }
+    default expr()
+  }```
+Man kann also auch aus einem case heraus einen anderen Case ansprechen, wie man auch eine function ausführen würde.
+Oprional kann nach der Variable im switch()-Kopf eine function-Referenz angegeben werden (z.B. "TYPE::equals"), mit der die Variable geprüft werden soll.
+  Syntax: ```switch(<variable>, TYPE::equals){/*...*/}```
