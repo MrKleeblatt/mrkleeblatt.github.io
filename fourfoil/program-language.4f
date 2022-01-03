@@ -1,34 +1,25 @@
+Variablen werden mit dem Schlüsselwort "var" erstellt.
+  Syntax:  ```var <name> = <value>``` bzw. ```var <name> <datatype>```
+Arrays sind ein Zusammenschluss an Variablen (siehe )  ```var <name>[<count>] <datatype>``` bzw. ```var <name> = [<inhalt>]```
+Konstanten werden mit dem Schlüsselwort "const" erstellt.
+  Syntax:  ```const <name> = <value>```
+# steht für "hex", danach kommt eine Zahl.
 
-//  Variablen werden mit dem Schlüsselwort "var" erstellt. Der Name muss mit einem '§'  beginnen.
-//    Syntax:  ```var <prim.datatype> §<name> = <value>``` bzw. ```var <prim.datatype> §<name>```
-//    Allerdings kann man Variablen auch als Konstanten definieren. Dafür kann man wie in C ganz am Anfang des Codes
-//  # steht für "hex", kann aber auch als "0x" geschrieben werden. Ob danach ein Leerzeichen kommt oder nicht ist dem Compiler egal,
-//    Hauptsache, danach kommt eine Zahl.
-//  Primitive Datentypen:
-//    int, byte, boolean, char, short, long, float, double
-//  Jeder Datentyp kann mit einer "Einheit" versehen werden. Dazu schreibt man hinter den Datentypen <Einheit>. Syntax (Beispiel):
-//    ```int<km> = 100km```
-//    Dadurch kann man in Konstruktoren z.B. ```object Gymnasium = Schule( 400Schueler )``` machen. Sinnvoll? ¯\_(ツ)_/¯ Aber geil
-//  Arrays werden mit dem Schlüsselwort "array" erstellt. Der Name muss mit einem kleinen Buchstaben beginnen und mit "[]" aufhören.
-//    Syntax: ```array <prim.datatype> <name>[<count>] <loop?>``` bzw.
-//    ```array <prim.datatype> <name> <loop?> = [<inhalt>][<inhalt>]``` "loop" steht dafür, ob der Index des Arrays beim
-//    Erreichen des Endes wieder beim Anfang beginnen soll. In der Konsole wird dann eine Warnung ausgegeben, dass der Index
-//    überschritten wurde.
-//    Des weiteren gibt es für Arrays einen weiteren Datentypen: 'relation', welcher erlaubt, die einzelnen Dimensionen eines Arrays mit
-//    verschiedenen Datentypen zu belegen. Syntax: ```array relation <name>[<count>](<datatype>,<datatype>) <loop?>```
-//  Objekte werden mit dem Schlüsselwort "object" erstellt. Syntax: ```object <name> = <constructor>``` bzw.
-//    ```object <name> = {4fon}```
-//  Sollte ein Objekt, ein Array, oder eine Variable nicht mehr benötigt werden, kann es mit "delete()" gelöscht werden.
-//    Syntax: ```<variable/object>.delete()``` Am Ende eines Programms werden eh alle Variablen und Objekte gelöscht.
-//  Das klonen eines Objektes ist ganz einfach mit der Funktion "clone()" zu veranstalten. Diese Funktion ist in der Klasse Object
-//    enthalten und kopiert alle Werte des zu klonenden Objektes in das neue Objekt hinein. Sollten die beiden Objekte nicht
-//    den gleichen Datentypen besitzen, muss die Funktion in der Klasse des zu klonenden Objektes überschrieben werden.
-//    Sollte die Funktion ein  Objekt klonen, welches wiederum ein anderes Objekt enthält, wird auch dieses Objekt mit geklont.
-//  Listen werden mit dem Schlüsselwort "list" erstellt. Syntax: ```list <name>``` für Listen gibt es die Funktionen "Add()",
-//    "Remove()", usw. Listen kümmern sich nicht um den Datentypen, der in ihnen gespeichert wird (im Gegensatz zu Arrays).
-//  Allgemein gilt immer: Werden nach einer Definition die geschwungenen Klammern weggelassen, folgt nur eine einzige Anweisung.
-//
+Bisherige Datentypen sind: int, byte, boolean, float, complex, string
+Man kann allgemein immer neue Datentypen mit "typedef" definieren.
+  Syntax: ```typedef <name> <typeType> {...}```
+  typeTypes hierbei können alle anderen Typen sein, z.B. int, byte, pointer, array oder list, jedoch nicht "type" selbst.
 
+Listen werden mit dem Schlüsselwort "list" erstellt.
+  Syntax: ```list <name>``` bzw. ```list <name> <listType>```
+  Hierbei ist listType z.B. eine LinkedList oder eine ArrayList.
+  Für Listen gibt es die Funktionen "add()", "remove()", usw.
+  Listen kümmern sich nicht um den Datentypen, der in ihnen gespeichert wird (im Gegensatz zu Arrays).
+  Das klonen einer list ist ganz einfach mit der Funktion "clone()" zu veranstalten. Sollten die beiden Listen nicht
+  den gleichen listType besitzen, muss die Funktion in der typedef der zu klonenden list überschrieben werden.
+  Sollte die Funktion eine list klonen, welche wiederum eine andere list, oder einen pointer enthält, wird auch dieses mit geklont.
+
+Allgemein gilt immer: Werden nach einer Definition die geschwungenen Klammern weggelassen, folgt nur eine einzige Anweisung.
 
 import Window from 4foil.Window
 import IO     from System.IO
