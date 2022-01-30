@@ -59,8 +59,8 @@ delete lustig
 
 
 //
-//  Funktionen werden mit dem Schlüsselwort "fun" erstellt. Syntax: ```fun <sichtb.mod.> <Object>.<name>(<Parameter>) = {<inhalt>}```
-//    bzw. ```fun <name>() = {<inhalt>}```
+//  Funktionen werden mit dem Schlüsselwort "fn" erstellt. Syntax: ```fn <sichtb.mod.> <Object>.<name>(<Parameter>) = {<inhalt>}```
+//    bzw. ```fn <name>() = {<inhalt>}```
 //  Sichtbarkeitsmodifizierer sind die gleichen wie in Java
 //  Wenn eine Funktion, eine variable, eine Klasse oder sonst irgendwas von einem Objekt abhängig ist, wird ein "Object." davorgeschieben.
 //		Sollte die Klasse des zu behandelnden Objektes bereits feststehen, wird anstatt Object die jeweilige Klasse eingetragen
@@ -244,7 +244,7 @@ Notiz:
 
    In 4foil sollen Dateien viel besser verarbeitet werden können als in Java (die Dateiverarbeitung ist da halt einfach Müll). Hierzu gibt es die Klasse "File", in der Funktionen zum Lesen, Schreiben, Umbenennen, Verschieben, Erstellen und Löschen von Dateien sind. Außerdem gibt es boolean-Funktionen zum Überprüfen z.B. der Länge der in der Datei gespeicherten Zeichen, der Größe der Datei, und viele andere has...-Funktionen. Funktionen anderer primitiver Datentypen sind auch vorhanden, so z.B. vom Typen int, wenn man die Stelle eines bestimmten Zeichens haben will:
 
-      fun Car.getCharPos(char toFind) public = {
+      fn Car.getCharPos(char toFind) public = {
 
          array char temp[] = this.toCharArray()
          list int charPos
@@ -306,3 +306,9 @@ switch-case soll viel einfacher und logischer sein als in C. Die Syntax sieht wi
 Man kann also auch aus einem case heraus einen anderen Case ansprechen, wie man auch eine function ausführen würde.
 Oprional kann nach der Variable im switch()-Kopf eine function-Referenz angegeben werden (z.B. "TYPE::equals"), mit der die Variable geprüft werden soll.
   Syntax: ```switch(<variable>, TYPE::equals){/*...*/}```
+
+
+Ein Pointer soll standardmäßig nicht null sein können, außer, sein Typ wird mit einem Fragezeichen angegeben. Syntax:
+  ```pointer p string?``` bzw. ```pointer p string? = "Hallo"; p = null```
+
+Bei einem typedef kann als Attribut "returns" angegeben werden, mit einer bereits erstellten Variable dahinter, die quasi der Standardwert sein soll. Dadurch wird verhindert, dass immer wieder sowas wie eine ".value()"-Methode aufgerufen werden muss, falls ein type wie eine Erweiterung eines anderen gewertet werden sollte.
