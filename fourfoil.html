@@ -45,7 +45,7 @@
                 href="#functions">Funktion</a>.
             Programme bestehen aus Tokens. Tokens der Sprache FourFoil sind:
         </p>
-        <!-- Token-Liste -->
+        <!--         Token-Liste -->
         <ul>
             <li></li>
             <li></li>
@@ -116,6 +116,7 @@
             eine Hexadezimalzahl handelt. Um die Adresse einer Variable zu bekommen, gibt man den Variablennamen mit dem
             Adressenoperatoren "<em>$</em>" davor an.
         </p>
+        <!--        Null-Safety-->
         <p>
             Anstatt der Angabe des Datentypen kann auch direkt eine Zuweisung erfolgen, wobei allerdings auf die
             Möglichkeit des null-pointers verzichtet werden muss.
@@ -127,10 +128,157 @@
             poi my_pointer_2 int?
             poi (pon, pot) string? = null
         </pre>
+        <h2 id="constants">Konstanten und globale Variablen</h2>
+        <p>
+            Variablen und Pointer existieren nur in ihrem Codeblock, also z.B. nur in der
+            <a href="#functions">Funktion</a> , Datei, oder <a href="#loops">Schleife</a> , in der sie erstellt wurden.
+            Sollte man eine Variable danach auch noch verwenden wollen, kann sie global erstellt werden. Dazu setzt man
+            vor das <em>var</em>-Schlüsselwort noch ein <em>global</em>.
+        </p>
+        <p>
+            Konstanten können nach ihrer Erstellung nicht mehr verändert werden. Ihnen muss bei der Deklaration ein Wert
+            zugewiesen werden. Wie auch bei globalen Variablen schreibt man bei Konstanten das Schlüsselwort vor die
+            Definition der Variable oder des Pointers. Das Schlüsselwort hierbei ist <em>const</em>.
+        </p>
+        <pre>
+            global var x int
+            const pointer y = $x
+            global const var z = 42
+            y = $z      # Compiler-Fehler. Konstanten können nicht geändert werden.
+        </pre>
         <h2 id="operators">Operatoren</h2>
         <p>
             Operatoren folgen keinem speziellen Muster, sondern werden in der folgenden Tabelle aufgeführt:
         </p>
+        <!--         Arithmetische Operatoren -->
+        <table>
+            <thead>Arithmetische Operatoren</thead>
+            <tr>
+                <th>Name</th>
+                <th>Operator</th>
+                <th>Funktion</th>
+            </tr>
+            <tr>
+                <td>Addition</td>
+                <td>a + b</td>
+                <td>Addiert a und b</td>
+            </tr>
+            <tr>
+                <td>Subtraktion</td>
+                <td>a - b</td>
+                <td>Subtrahiert a und b</td>
+            </tr>
+            <tr>
+                <td>Multiplikation</td>
+                <td>a * b</td>
+                <td>Multipliziert a und b</td>
+            </tr>
+            <tr>
+                <td>Division</td>
+                <td>a / b</td>
+                <td>Dividiert a und b</td>
+            </tr>
+            <tr>
+                <td>Modulo</td>
+                <td>a % b</td>
+                <td>Gibt den Rest einer Ganzzahldivision zwischen a und b zurück</td>
+            </tr>
+            <tr>
+                <td>Potenzierung</td>
+                <td>a ** b</td>
+                <td>Gibt a hoch b zurück</td>
+            </tr>
+            <tr>
+                <td>Negierung</td>
+                <td>-a</td>
+                <td>Gibt (-1) * a zurück</td>
+            </tr>
+            <tr>
+                <td>Adressen-Operator</td>
+                <td>$a</td>
+                <td>Gibt die Adresse von a zurück</td>
+            </tr>
+        </table>
+        <!--         Boolesche Operatoren -->
+        <table>
+            <thead>
+            Boolesche Operatoren, auch Vergleiche genannt, geben einen bool zurück: true, wenn die Bedingung erfüllt ist
+            und false, wenn
+            nicht. Sie überprüfen, ob...
+            </thead>
+            <tr>
+                <th>Name</th>
+                <th>Operator</th>
+                <th>Funktion</th>
+            </tr>
+            <tr>
+                <td>Gleichheit</td>
+                <td>a == b</td>
+                <td>a und b den gleichen Wert haben.</td>
+            </tr>
+            <tr>
+                <td>Ungleichheit</td>
+                <td>a != b</td>
+                <td>a und b einen unterschiedlichen Wert haben.</td>
+            </tr>
+            <tr>
+                <td>Größer-als</td>
+                <td>a > b</td>
+                <td>a größer als b ist.</td>
+            </tr>
+            <tr>
+                <td>Kleiner-als</td>
+                <td>a < b</td>
+                <td>a kleiner als b ist.</td>
+            </tr>
+            <tr>
+                <td>Größer-gleich</td>
+                <td>a >= b</td>
+                <td>a größer gleich b ist.</td>
+            </tr>
+            <tr>
+                <td>Kleiner-gleich</td>
+                <td>a <= b</td>
+                <td>a kleiner gleich b ist.</td>
+            </tr>
+        </table>
+        <!--         Logische Operatoren -->
+        <table>
+            <thead>
+            Logische Operatoren sind wie Boolesche Operatoren, die Boolesche Werte überprüfen. Sie geben true
+            zurück, wenn
+            </thead>
+            <tr>
+                <th>Name</th>
+                <th>Operator</th>
+                <th>Funktion</th>
+            </tr>
+            <tr>
+                <td>UND</td>
+                <td>a and b</td>
+                <td>a und b true sind.</td>
+            </tr>
+            <tr>
+                <td>ODER</td>
+                <td>a or b</td>
+                <td>a oder b true ist, oder wenn beide true sind.</td>
+            </tr>
+            <tr>
+                <td>EXKLUSIV-ODER</td>
+                <td>a xor b</td>
+                <td>a oder b true ist, aber nicht beide.</td>
+            </tr>
+            <tr>
+                <td>KEINER</td>
+                <td>a nor b</td>
+                <td>a und b false sind.</td>
+            </tr>
+            <tr>
+                <td>NICHT</td>
+                <td>not a</td>
+                <td>a false ist.</td>
+            </tr>
+        </table>
         <h2 id="operator-expressions">Operator-Anweisungen</h2>
         <p>
             Operator-Anweisungen sind Operatoren mit anschließender Zuweisung, und somit eine Kurzschreibweise der
@@ -166,22 +314,15 @@
                 <td>a wird b-mal mit sich selbst multipliziert</td>
             </tr>
             <tr>
-                <td>++a</td>
+                <td>a++</td>
                 <td>Kurzform für <em>a += 1</em></td>
             </tr>
             <tr>
-                <td>--a</td>
+                <td>a--</td>
                 <td>Kurzform für <em>a -= 1</em></td>
             </tr>
-            <tr>
-                <td>a++</td>
-                <td>Gibt einen neuen Wert zurück, der dem alten Wert von a entspricht, und erhöht a um 1</td>
-            </tr>
-            <tr>
-                <td>a--</td>
-                <td>Gibt einen neuen Wert zurück, der dem alten Wert von a entspricht, und senkt a um 1</td>
-            </tr>
         </table>
+        <!--        Bitwise-->
         <p>
             Neben den numerischen Anweisungen gibt es auch noch bitweise Operator-Anweisungen, welche das Verhalten der
             einzelnen Bits einer Zahl ändern, und hier aufgeführt sind:
@@ -222,6 +363,94 @@
                 </td>
             </tr>
         </table>
+        <h2 id="if">Abfragen und Bedingungen</h2>
+        <p>
+            if-Abfragen sind Codeblöcke, die nur ausgeführt werden, wenn eine Bedingung erfüllt wird.
+            Eingeleitet werden sie mit dem Schlüsselwort <em>if</em>, worauf in normalen Klammern ein Boolescher Wert,
+            oder ein Boolescher Ausdruck folgen muss.
+            Ein Boolescher Ausdruck ist hierbei entweder ein Vergleich, oder ein Pointer, der automatisch auf null
+            geprüft wird.
+            Nach einer if-Abfrage und der darauffolgenden Anweisung kann das Schlüsselwort <em>else</em> folgen, dessen
+            Anweisungen nur ausgeführt werden, wenn die Bedingung der vorigen if-Abfrage nicht erfüllt wird.
+            Anweisungen können in geschweiften Klammern zusammengefasst werden.
+        </p>
+        <pre>
+            if ( a == b ) {
+                Anweisung1()
+                Anweisung2()
+            }
+
+            if ( c ) Anweisung1(); else Anweisung2()
+        </pre>
+        <p>
+            Kurzformen sind praktisch. Eine bereits auch in anderen Programmiersprachen weit verbreitete Kurzform einer
+            if-Abfrage ist der Auswahloperator. Hierbei wird ein Wert zurückgegeben, wenn eine Bedingung erfüllt ist.
+            nach der Bedingung wird einfach ein Fragezeichen gesetzt, auf das dann der Wert folgt, der zurückgegeben
+            werden soll, falls die Bedingung erfüllt wurde, dann ein Doppelpunkt und der zurückzugebende Wert, falls die
+            Bedingung nicht erfüllt wurde.
+        </p>
+        <pre>
+            # Wenn a == b, ist x dann c, andernfalls d. Hier mit klammern verdeutlicht
+            var x = (a == b ? c : d)
+            # auch ohne Klammern legitim
+            var x = a == b ? c : d
+        </pre>
+        <h2 id="loops">Schleifen</h2>
+        <p>
+            Schleifen wiederholen Codeblöcke, solange eine Bedingung erfüllt ist.
+            Die verschiedenen Schleifen sind hier aufgeführt.
+            Auch hier können wieder mehrere Anweisungen nach der Bedingung durch geschweifte Klammern zusammengefasst
+            werden.
+        </p>
+        <section>
+            <h3>While-Schleife</h3>
+            <p>Die while-Schleife führt den Code so lange aus, wie die Bedingung erfüllt ist.</p>
+            <pre>
+                while( a == b ) Anweisung()
+            </pre>
+        </section>
+        <section>
+            <h3>Do-While-Schleife</h3>
+            <p>
+                Die do-while-Schleife führt den Code so lange aus, wie die Bedingung erfüllt ist, jedoch immer
+                mindestens einmal.
+            </p>
+            <pre>
+                do while( a == b ) Anweisung()
+            </pre>
+        </section>
+        <section>
+            <h3>For-Schleife</h3>
+            <p>
+                Die for-Schleife führt den Code so lange aus, wie die Bedingung erfüllt ist.
+                In ihrem Kopf werden drei Anweisungen angegeben. Die erste wird ausgeführt, wenn die Schleife das erste
+                Mal ausgeführt wird, die dritte bei jedem Beenden eines Durchlaufs. Die Bedingung ist die zweite
+                Anweisung.
+                Anweisungen können auch weggelassen werden, wenn sie nicht benötigt werden. Die Semikola müssen jedoch
+                stehen bleiben.
+            </p>
+            <pre>
+                for (var i = 0; i < b; i++) Anweisung()
+                for (;a == b;) Anweisung()
+            </pre>
+            <p>
+                Die zweite Variante, eine for-Schleife zu nutzen ist, ihr einfach nur einen <em>int</em> zu übergeben.
+                Dann werden alle Anweisungen exakt so viele Male ausgeführt.
+            </p>
+            <pre>
+                for(5) Anweisung()
+            </pre>
+        </section>
+        <section>
+            <h3>Do-While-Schleife</h3>
+            <p>
+                Die do-while-Schleife führt den Code so lange aus, wie die Bedingung erfüllt ist, jedoch immer
+                mindestens einmal.
+            </p>
+            <pre>
+                do while( a == b ) Anweisung()
+            </pre>
+        </section>
         <h2 id="arrays">Arrays</h2>
         <p>
             Arrays sind Datenstrukturen, die mehrere Werte des gleichen Typen enthalten. Man kann sie als einfache
@@ -240,6 +469,7 @@
             arr mein_array string 6
             arr dein_array pointer 42
         </pre>
+        <!--        Anonyme Arrays-->
         <p>
             Anonyme Arrays sind Arrays ohne Namen, die ausschließlich als Parameter übergeben werden können. sie werden
             durch die folgende Syntax erstellt. Da sie keinen Namen besitzen, ist es dem Programmierer nicht möglich,
@@ -256,6 +486,7 @@
         <pre>
             arr dein_array = [int 1, 5]
         </pre>
+        <!--        Rechnen mit Arrays-->
         <p>
             Mit Arrays kann auch gerechnet werden, jedoch sind die Rechenmethoden eingeschränkt.
             Der Betrag eines Arrays ist die Wurzel aus den Quadraten der einzelnen Elemente, vorausgesetzt, die Elemente
