@@ -111,7 +111,7 @@
             Pointer sind eine spezielle Variante von Variablen, die jedoch keinen Wert selbst enthalten, sondern auf
             eine andere Variable "zeigen". Den Wert eines Pointers zu verändern, ist gleichzusetzen mit der direkten
             Änderung der Variable, auf die der Pointer zeigt.
-            Syntaktisch wird ein Pointer mit dem Schlüsselwort "<code>poi</code>" erstellt, worauf ein Name folgt, der
+            Syntaktisch wird ein Pointer mit dem Schlüsselwort "<code>ptr</code>" erstellt, worauf ein Name folgt, der
             den gleichen Voraussetzungen wie ein Variablenname entsprechen muss.
             Nach dem Namen folgt der (möglicherweise abstrakte) Datentyp der Variable, auf die der Pointer zeigen soll.
             Sollte der Pointer auf nichts (<code>null</code>) zeigen dürfen, muss das anhand eines Fragezeichens nach
@@ -128,9 +128,9 @@
         </p>
         <pre>
             var myVariable = 15
-            poi my_pointer = $myVariable
-            poi my_pointer_2 int?
-            poi (pon, pot) string? = null
+            ptr my_pointer = $myVariable
+            ptr my_pointer_2 int?
+            ptr (pon, pot) string? = null
         </pre>
         <h2 id="constants">Konstanten und globale Variablen</h2>
         <p>
@@ -146,7 +146,7 @@
         </p>
         <pre>
             global var x int
-            const pointer y = $x
+            const ptr y = $x
             global const var z = 42
             y = $z      # Compiler-Fehler. Konstanten können nicht geändert werden.
         </pre>
@@ -427,6 +427,24 @@
                 </td>
             </tr>
         </table>
+        <p>
+            Operatoren habe eine bestimmte Priorität, in welcher sie ausgeführt werden, und einige werden von links nach
+            rechts, andere von rechts nach links ausgeführt.
+            Die folgende Liste zeigt, in welcher Reihenfolge Operatoren vom Compiler beachtet werden. Die höchste
+            Priorität steht zu erst.
+        </p>
+        <table>
+            <tr>
+                <th>Kategorie</th>
+                <th>Operatoren</th>
+                <th>Richtung</th>
+            </tr>
+            <tr>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+        </table>
         <h2 id="if">Abfragen und Bedingungen</h2>
         <p>
             if-Abfragen sind Codeblöcke, die nur ausgeführt werden, wenn eine Bedingung erfüllt wird.
@@ -465,7 +483,7 @@
         </pre>
         <!--        ||null-Überprüfung-->
         <p>
-            Ene weitere Kurzform überprüft einen Pointer auf null. Man schreibt den pointer, dann den Sonst-Operator
+            Ene weitere Kurzform überprüft einen Pointer auf null. Man schreibt den Pointer, dann den Sonst-Operator
             <code>||</code> und danach den Wert, der zurückgegeben werden soll, falls der vorige Pointer null war.
             Um die Dinge noch kürzer zu machen, kann man, wenn es um <a href="#structs">Structs</a> geht, folgendes
             machen.
@@ -542,16 +560,23 @@
         </p>
         <p>
             Erstellt werden Arrays über das Schlüsselwort <code>arr</code>, auf welches dann der Name des Arrays folgt,
-            dann
-            der (möglicherweise abstrakte) Datentyp und letztendlich die Anzahl an Elementen, die maximal drin
-            gespeichert werden können soll, also
-            quasi die Größe des Arrays. Falls diese anfangs nicht bekannt sein sollte, kann stattdessen auf eine
-            komplexere <a href="#datastructures">Datenstruktur</a> zurückgegriffen werden, bei welcher die Größe
-            flexibel ist, die dafür aber natürlich auch mehr Speicher in Anspruch nehmen.
+            dann der (möglicherweise abstrakte) Datentyp und letztendlich die Anzahl an Elementen, die maximal drin
+            gespeichert werden können soll, also quasi die Größe des Arrays. Falls diese anfangs nicht bekannt sein
+            sollte, kann stattdessen auf eine komplexere <a href="#datastructures">Datenstruktur</a> zurückgegriffen
+            werden, bei welcher die Größe flexibel ist, die dafür aber natürlich auch mehr Speicher in Anspruch nehmen.
+            Alle Elemente eines leeren Arrays haben den in der <a href="#datatypes">Datentyp-Definition</a> festgelegten
+            Standardwert. Bei Pointern ist es null.
+        </p>
+        <p>
+            Auf Array-Elemente kann mit einem Index zugegriffen werden. Dazu schreibt man den Namen des Arrays, dann in
+            eckigen Klammern den Index (natürliche Zahl, Indizes starten bei 0).
+            Sollte der Index genauso groß sein, wie die Länge des Arrays, wird eine
+            ArrayIndexOutOfBounds-<a href="#exceptions">Exception</a> geworfen.
         </p>
         <pre>
             arr mein_array string 6
             arr dein_array pointer 42
+            var x = dein_array[0]
         </pre>
         <!--        Anonyme Arrays-->
         <p>
@@ -625,14 +650,78 @@
             </pre>
         </section>
         <h2 id="structs">Structs</h2>
-        <p>Structs sind eine andere Form, um Daten zu strukturieren.</p>
+        <p>
+            Structs sind eine andere Form, um Daten zu strukturieren.
+            Sie werden mit dem Schlüsselwort <code>struct</code> erstellt, worauf der Name und der
+            <a href="#datatypes">Datentypen</a> folgen.
+            Danach muss eine Zuweisung folgen, sollte der Typ nicht nullable sein. Dabei müssen alle nicht bereits
+            zugewiesenen Werte des struct-Typen im struct-Design zugewiesen werden.
+            Zunächst wird der Name der zu überschreibenden Variable geschrieben, danach ein Doppelpunkt und der
+            zuzuweisende Wert, welcher den in der Datentypdefinition festgelegten Typen haben muss.
+            Verwirrt? Ich auch.
+            Es können auch noch weitere Werte ergänzt werden, wobei da allerdings noch angegeben werden muss, ob es sich
+            um eine Variable, Konstante, Array, usw. handelt.
+            Die Attribute können durch ein Komma voneinander getrennt werden, um sie in einer Zeile schreiben zu können.
+        </p>
+        <pre>
+            struct mein_struct human?
+            struct dein_struct human = {
+                name: "Heinz Harald"
+                var ist_klug: true
+                age: 42, size_in_cm: 180
+            }
+        </pre>
+        <p>
+            Auf die Werte eines Structs kann man mit einem Punkt und dann dem Namen des Attributs zugreifen.
+        </p>
+        <pre>
+            var x = mein_struct.attribut
+        </pre>
+        <p>
+            Anonyme structs sind structs ohne Namen und ohne Datentyp. Sie werden durch geschweifte Klammern erstellt.
+            Sie können als einzige direkt einem struct ohne Datentypen zugewiesen werden.
+        </p>
+        <pre>
+            struct x = {
+                var name: "Max Mustermann"
+                var age: 43
+            }
+        </pre>
         <h2 id="functions">Funktionen</h2>
-        <p>...</p>
+        <p>
+            Funktionen sind Codeblöcke, die zusammengefasst und vom restlichen (nicht globalen) abgeschlossen werden.
+            Sie werden über das Schlüsselwort <code>fun</code> erstellt, worauf optional der zu erweiternde
+            typedef mit einem Punkt und obligatorisch der Name der Funktion folgen. Nach dem Namen stehen in Klammern
+            Variablen, Pointer oder sonstige Parameter.
+            Danach kann eine neue Funktion definiert werden, indem einfach nur in geschweiften Klammern Anweisungen
+            folgen. Funktionen müssen immer einen Wert zurückgeben. Dieser Wert kann mit dem Schlüsselwort
+            <code>return</code> angegeben werden, ist standardmäßig aber immer 0.
+        </p>
+        <pre>
+            fun meine_funktion(var zahl int, var name string){
+                Anweisung1()
+                Anweisung2()
+            }
+        </pre>
+        <p>
+            Anonyme Funktionen, oder auch Lambda-Funktionen genannt, haben keinen Namen. Sie können einer neu erstellten
+            Funktion alternativ zum Codeblock zugewiesen werden. Dazu schreibt man anstatt der geschweiften Klammern ein
+            Gleichheitszeichen und dahinter die Anonyme Funktion.
+            Erstellt werden anonyme Funktionen durch normale Klammern, in denen alle Parameter mit Kommata getrennt
+            aufgezählt werden, und dann folgt der Codeblock in geschweiften Klammern.
+        </p>
+        <pre>
+            fun deinStruct.deineFunktion() = (){
+                return 1
+            }
+        </pre>
         <h2 id="namespaces">Namespaces</h2>
         <p>...</p>
         <h2 id="datatypes">Datentypen</h2>
         <p>...</p>
         <h2 id="datastructures">Datenstrukturen</h2>
+        <p>...</p>
+        <h2 id="exceptions">Exceptions</h2>
         <p>...</p>
     </article>
 </main>
