@@ -41,7 +41,7 @@
     <h1 id="getting-started">Und los geht's</h1>
     <article>
         <p>
-            Jedes Programm startet in einer <em>main.ff</em>-Datei, oder einer <em>main(var args string){}</em>-<a
+            Jedes Programm startet in einer <code>main.ff</code>-Datei, oder einer <code>main(var args string){}</code>-<a
                 href="#functions">Funktion</a>.
             Programme bestehen aus Tokens. Tokens der Sprache FourFoil sind:
         </p>
@@ -50,6 +50,7 @@
             <li></li>
             <li></li>
         </ul>
+        <!--        Kommentare-->
         <p>
             Für jede Klammer-auf muss es in der Datei eine Klammer-zu geben.
             Andere Tokens haben andere Syntaxregeln, die beachtet werden müssen, die im Laufe dieser Erklärung noch
@@ -63,6 +64,7 @@
         <pre>
             # Das ist ein Kommentar über eine gesamte Zeile xD
         </pre>
+        <!--        Literale usw.-->
         <p>
             Nach jeder Anweisung muss entweder eine neue Zeile beginnen, oder ein Semikolon stehen.
             Anweisungen können entweder das Ausführen von <a href="#functions">Funktionen</a> oder von <a
@@ -71,17 +73,17 @@
             mithilfe anderer Tokens gegeben werden, zu manipulieren.
             Literale sind eine spezielle Form der Tokens, welche Informationen enthalten. Zahlen sind grundsätzlich
             immer Literale in FourFoil, wie auch strings, also Zeichen innerhalb zweier Anführungszeichen.
-            Andere Token sind z.B. für die Definition von Variablen zuständig und werden <em>Schlüsselwörter</em>
+            Andere Token sind z.B. für die Definition von Variablen zuständig und werden <code>Schlüsselwörter</code>
             genannt.
         </p>
         <h2 id="variables">Variablen</h2>
         <p>
             Variablen sind veränderliche Werte, also reservierte Speicherbereiche, deren Inhalt sich im Lauf des
             Programms ändern kann.
-            Sie werden mit dem Schlüsselwort "<em>var</em>" erstellt, worauf der Name der Variable folgt.
-            Namen müssen mit einem Unterstrich "<em>_</em>", oder einem der Buchstaben des lateinischen Alphabets
+            Sie werden mit dem Schlüsselwort "<code>var</code>" erstellt, worauf der Name der Variable folgt.
+            Namen müssen mit einem Unterstrich "<code>_</code>", oder einem der Buchstaben des lateinischen Alphabets
             beginnen.
-            Nach dem Namen kann entweder direkt ein Wert mittels des Zuweisungsoperatoren "<em>=</em>" zugewiesen
+            Nach dem Namen kann entweder direkt ein Wert mittels des Zuweisungsoperatoren "<code>=</code>" zugewiesen
             werden, oder der (nicht-abstrakte) <a href="#datatypes">Datentyp</a> der Variable angegeben werden, worauf
             auch wieder eine Zuweisung folgen darf.
         </p>
@@ -92,7 +94,8 @@
         </pre>
         <p>
             Um Schreibarbeit zu verkürzen, ist es außerdem möglich, mehrere Variablen des gleichen Types oder Wertes mit
-            einer Operation zu definieren. Hierzu schreibt man wie gewohnt das Schlüsselwort <em>var</em>, worauf jedoch
+            einer Operation zu definieren. Hierzu schreibt man wie gewohnt das Schlüsselwort <code>var</code>, worauf
+            jedoch
             eine normale Klammer-auf folgt, die Namen der zu erstellenden Variablen mit Kommata voneinander getrennt
             aufgeführt werden, und die Aufzählung mit einer Klammer-zu und entweder einer Deklaration oder Zuweisung
             abgeschlossen wird.
@@ -108,13 +111,14 @@
             Pointer sind eine spezielle Variante von Variablen, die jedoch keinen Wert selbst enthalten, sondern auf
             eine andere Variable "zeigen". Den Wert eines Pointers zu verändern, ist gleichzusetzen mit der direkten
             Änderung der Variable, auf die der Pointer zeigt.
-            Syntaktisch wird ein Pointer mit dem Schlüsselwort "<em>poi</em>" erstellt, worauf ein Name folgt, der
+            Syntaktisch wird ein Pointer mit dem Schlüsselwort "<code>poi</code>" erstellt, worauf ein Name folgt, der
             den gleichen Voraussetzungen wie ein Variablenname entsprechen muss.
             Nach dem Namen folgt der (möglicherweise abstrakte) Datentyp der Variable, auf die der Pointer zeigen soll.
-            Sollte der Pointer auf nichts (<em>null</em>) zeigen dürfen, muss das anhand eines Fragezeichens nach dem
+            Sollte der Pointer auf nichts (<code>null</code>) zeigen dürfen, muss das anhand eines Fragezeichens nach
+            dem
             Datentypen symbolisiert werden. Danach kann dem Pointer eine Adresse zugewiesen werden, wobei es sich um
             eine Hexadezimalzahl handelt. Um die Adresse einer Variable zu bekommen, gibt man den Variablennamen mit dem
-            Adressenoperatoren "<em>$</em>" davor an.
+            Adressenoperatoren "<code>$</code>" davor an.
         </p>
         <!--        Null-Safety-->
         <p>
@@ -133,12 +137,12 @@
             Variablen und Pointer existieren nur in ihrem Codeblock, also z.B. nur in der
             <a href="#functions">Funktion</a> , Datei, oder <a href="#loops">Schleife</a> , in der sie erstellt wurden.
             Sollte man eine Variable danach auch noch verwenden wollen, kann sie global erstellt werden. Dazu setzt man
-            vor das <em>var</em>-Schlüsselwort noch ein <em>global</em>.
+            vor das <code>var</code>-Schlüsselwort noch ein <code>global</code>.
         </p>
         <p>
             Konstanten können nach ihrer Erstellung nicht mehr verändert werden. Ihnen muss bei der Deklaration ein Wert
             zugewiesen werden. Wie auch bei globalen Variablen schreibt man bei Konstanten das Schlüsselwort vor die
-            Definition der Variable oder des Pointers. Das Schlüsselwort hierbei ist <em>const</em>.
+            Definition der Variable oder des Pointers. Das Schlüsselwort hierbei ist <code>const</code>.
         </p>
         <pre>
             global var x int
@@ -279,6 +283,55 @@
                 <td>a false ist.</td>
             </tr>
         </table>
+        <!--        Logische Bitwise-->
+        <table>
+            <thead>
+            Neben den numerischen Anweisungen gibt es auch noch bitweise Operator-Anweisungen, welche das
+            Verhalten der einzelnen Bits einer Zahl ändern.
+            </thead>
+            <tr>
+                <th>Name</th>
+                <th>Operator</th>
+                <th>Funktion</th>
+            </tr>
+            <tr>
+                <td>UND</td>
+                <td>a & b</td>
+                <td>Führt für jedes Bit der beiden Parameter a und b die UND-Überprüfung durch.</td>
+            </tr>
+            <tr>
+                <td>ODER</td>
+                <td>a | b</td>
+                <td>Führt für jedes Bit der beiden Parameter a und b die ODER-Überprüfung durch.</td>
+            </tr>
+            <tr>
+                <td>EXKLUSIV-ODER</td>
+                <td>a ^ b</td>
+                <td>Führt für jedes Bit der beiden Parameter a und b die EXKLUSIV-ODER-Überprüfung durch.</td>
+            </tr>
+            <tr>
+                <td>LINKS-Verschiebung</td>
+                <td>a << b</td>
+                <td>
+                    Gibt einen Wert zurück, der a entspricht, jedoch alle um b Stellen nach links verschoben (entspricht
+                    einer Multiplikation mit 2**b), ist ber wesentlich effizienter.
+                </td>
+            </tr>
+            <tr>
+                <td>RECHTS-Verschiebung</td>
+                <td>a >> b</td>
+                <td>
+                    Gibt einen Wert zurück, der a entspricht, jedoch alle um b Stellen nach rechts verschoben
+                    (entspricht einer Division mit 2**b), ist ber wesentlich effizienter. Dabei werden alle Bits, die
+                    über den rechten Rand hinaus gehen, gelöscht.
+                </td>
+            </tr>
+            <tr>
+                <td>NEGIERUNG</td>
+                <td>!a</td>
+                <td>Dreht alle Bits von a um.</td>
+            </tr>
+        </table>
         <h2 id="operator-expressions">Operator-Anweisungen</h2>
         <p>
             Operator-Anweisungen sind Operatoren mit anschließender Zuweisung, und somit eine Kurzschreibweise der
@@ -286,77 +339,88 @@
         </p>
         <table>
             <tr>
+                <th>Name</th>
                 <th>Operator-Anweisung</th>
                 <th>Funktion</th>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a += b</td>
                 <td>Zu der Variable a wird b addiert</td>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a -= b</td>
                 <td>Von a wird b subtrahiert</td>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a *= b</td>
                 <td>a wird mit b multipliziert</td>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a /= b</td>
                 <td>a wird durch b geteilt</td>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a %= b</td>
                 <td>Der Rest, der bei einer Ganzzahldivision von a mit b rauskommt, wird in a gespeichert</td>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a **= b</td>
                 <td>a wird b-mal mit sich selbst multipliziert</td>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a++</td>
-                <td>Kurzform für <em>a += 1</em></td>
+                <td>Kurzform für <code>a += 1</code></td>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a--</td>
-                <td>Kurzform für <em>a -= 1</em></td>
+                <td>Kurzform für <code>a -= 1</code></td>
             </tr>
         </table>
         <!--        Bitwise-->
-        <p>
-            Neben den numerischen Anweisungen gibt es auch noch bitweise Operator-Anweisungen, welche das Verhalten der
-            einzelnen Bits einer Zahl ändern, und hier aufgeführt sind:
-        </p>
         <table>
             <tr>
+                <th>Name</th>
                 <th>Operator-Anweisung</th>
                 <th>Funktion</th>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a &= b</td>
                 <td>Führt für jedes Bit der beiden Parameter a und b die UND-Überprüfung durch, und speichert das
                     Ergebnis in a.
                 </td>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a |= b</td>
                 <td>Führt für jedes Bit der beiden Parameter a und b die ODER-Überprüfung durch, und speichert das
                     Ergebnis in a.
                 </td>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a ^= b</td>
                 <td>Führt für jedes Bit der beiden Parameter a und b die EXKLUSIV-ODER-Überprüfung durch, und speichert
                     das Ergebnis in a.
                 </td>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a <<= b</td>
                 <td>verschiebt die Bits von a um b Stellen nach links (entspricht einer Multiplikation mit 2**b), ist
                     aber wesentlich effizienter.
                 </td>
             </tr>
             <tr>
+                <td>Name</td>
                 <td>a >>= b</td>
                 <td>Verschiebt die Bits von a um b Stellen nach rechts (entspricht einer Division mit 2**b), ist aber
                     wesentlich effizienter.
@@ -366,11 +430,13 @@
         <h2 id="if">Abfragen und Bedingungen</h2>
         <p>
             if-Abfragen sind Codeblöcke, die nur ausgeführt werden, wenn eine Bedingung erfüllt wird.
-            Eingeleitet werden sie mit dem Schlüsselwort <em>if</em>, worauf in normalen Klammern ein Boolescher Wert,
+            Eingeleitet werden sie mit dem Schlüsselwort <code>if</code>, worauf in normalen Klammern ein Boolescher
+            Wert,
             oder ein Boolescher Ausdruck folgen muss.
             Ein Boolescher Ausdruck ist hierbei entweder ein Vergleich, oder ein Pointer, der automatisch auf null
             geprüft wird.
-            Nach einer if-Abfrage und der darauffolgenden Anweisung kann das Schlüsselwort <em>else</em> folgen, dessen
+            Nach einer if-Abfrage und der darauffolgenden Anweisung kann das Schlüsselwort <code>else</code> folgen,
+            dessen
             Anweisungen nur ausgeführt werden, wenn die Bedingung der vorigen if-Abfrage nicht erfüllt wird.
             Anweisungen können in geschweiften Klammern zusammengefasst werden.
         </p>
@@ -382,6 +448,7 @@
 
             if ( c ) Anweisung1(); else Anweisung2()
         </pre>
+        <!--        ?:-->
         <p>
             Kurzformen sind praktisch. Eine bereits auch in anderen Programmiersprachen weit verbreitete Kurzform einer
             if-Abfrage ist der Auswahloperator. Hierbei wird ein Wert zurückgegeben, wenn eine Bedingung erfüllt ist.
@@ -392,8 +459,23 @@
         <pre>
             # Wenn a == b, ist x dann c, andernfalls d. Hier mit klammern verdeutlicht
             var x = (a == b ? c : d)
+
             # auch ohne Klammern legitim
             var x = a == b ? c : d
+        </pre>
+        <!--        ||null-Überprüfung-->
+        <p>
+            Ene weitere Kurzform überprüft einen Pointer auf null. Man schreibt den pointer, dann den Sonst-Operator
+            <code>||</code> und danach den Wert, der zurückgegeben werden soll, falls der vorige Pointer null war.
+            Um die Dinge noch kürzer zu machen, kann man, wenn es um <a href="#structs">Structs</a> geht, folgendes
+            machen.
+            Sei "a" ein struct beliebigen Typs mit den Attributen "b" und "c". Wird nun b auf null überprüft, ist es
+            nach dem Sonst-Operator nicht mehr notwendig, a noch einmal zu erwähnen, sondern es kann mit ".c"
+            direkt weitergehen. Diese Schreibweise entspricht (a.b == null? a.c: a.b)
+        </p>
+        <pre>
+            var x = a || b      # Wenn a null ist, ist x = b
+            var x = a.b || .c   # Wenn a.b null ist, ist x = a.c
         </pre>
         <h2 id="loops">Schleifen</h2>
         <p>
@@ -434,7 +516,8 @@
                 for (;a == b;) Anweisung()
             </pre>
             <p>
-                Die zweite Variante, eine for-Schleife zu nutzen ist, ihr einfach nur einen <em>int</em> zu übergeben.
+                Die zweite Variante, eine for-Schleife zu nutzen ist, ihr einfach nur einen <code>int</code> zu
+                übergeben.
                 Dann werden alle Anweisungen exakt so viele Male ausgeführt.
             </p>
             <pre>
@@ -458,7 +541,8 @@
             durchgeführt werden können wie mit mathematischen Vektoren.
         </p>
         <p>
-            Erstellt werden Arrays über das Schlüsselwort <em>arr</em>, auf welches dann der Name des Arrays folgt, dann
+            Erstellt werden Arrays über das Schlüsselwort <code>arr</code>, auf welches dann der Name des Arrays folgt,
+            dann
             der (möglicherweise abstrakte) Datentyp und letztendlich die Anzahl an Elementen, die maximal drin
             gespeichert werden können soll, also
             quasi die Größe des Arrays. Falls diese anfangs nicht bekannt sein sollte, kann stattdessen auf eine
@@ -480,7 +564,8 @@
         </pre>
         <p>
             Anonyme Arrays können allerdings auch genutzt werden, um ein Array direkt zu initialisieren. Dazu schreibt
-            man das Schlüsselwort <em>arr</em>, den Namen des Arrays, das Gleichheitszeichen und daraufhin ein anonymes
+            man das Schlüsselwort <code>arr</code>, den Namen des Arrays, das Gleichheitszeichen und daraufhin ein
+            anonymes
             Array, welches zugewiesen werden soll. Die Syntax ist wie folgt.
         </p>
         <pre>
@@ -490,7 +575,7 @@
         <p>
             Mit Arrays kann auch gerechnet werden, jedoch sind die Rechenmethoden eingeschränkt.
             Der Betrag eines Arrays ist die Wurzel aus den Quadraten der einzelnen Elemente, vorausgesetzt, die Elemente
-            sind alle vom Typen <em>number</em>.
+            sind alle vom Typen <code>number</code>.
         </p>
         <p>
             Bei der Addition/Subtraktion zweier Arrays werden die Werte nach ihrem Index addiert/subtrahiert. Sollten
