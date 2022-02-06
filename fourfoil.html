@@ -21,7 +21,7 @@
 </header>
 <main>
     <h1>Allgemein</h1>
-    <section>
+    <article>
         <p>
             FourFoil ist eine Programmiersprache mehrerer Programmierparadigmen, die nach dem Motto "einfach, aber
             schnell"
@@ -30,49 +30,47 @@
             auch aus der prozeduralen Programmierung enthalten sein.
             Eine besondere Rolle spielt in FouFoil auch das Definieren eines <a href="#datatypes">Datentypen</a>.
         </p>
-    </section>
+    </article>
 
     <h2 id="examples">Beispiele</h2>
-    <section></section>
+    <article>...</article>
 
     <h2 id="install">Installation</h2>
-    <section></section>
+    <article>...</article>
 
     <h1 id="getting-started">Und los geht's</h1>
-    <section>
+    <article>
         <p>
             Jedes Programm startet in einer <em>main.ff</em>-Datei, oder einer <em>main(var args string){}</em>-<a
                 href="#functions">Funktion</a>.
             Programme bestehen aus Tokens. Tokens der Sprache FourFoil sind:
         </p>
-        <!-- Token-Tabelle -->
-        <table>
-            <thead>
-            <tr>
-                <th>einzelne Charaktere</th>
-                <th>Hallo</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Token</td>
-                <td>la</td>
-            </tr>
-            </tbody>
-        </table>
+        <!-- Token-Liste -->
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
         <p>
             Für jede Klammer-auf muss es in der Datei eine Klammer-zu geben.
             Andere Tokens haben andere Syntaxregeln, die beachtet werden müssen, die im Laufe dieser Erklärung noch
             angesprochen werden.
             Mehrere Tokens in einer bestimmten Syntax zusammen formieren Anweisungen.
+            Kommentare jedoch werden zwar mit einer Abfolge an Tokens eingeleitet, gehören allerdings nicht zu
+            Anweisungen, da sie vom Compiler komplett ignoriert werden, und nur zum Verständnis des Programmierers
+            beitragen. Eingeleitet wird ein Kommentar mit einem Rautenzeichen und einem darauffolgenden Leerzeichen.
+            Alles, was in dieser Zeile folgt, gilt nun als Kommentar und wird vom Compiler ignoriert.
         </p>
+        <pre>
+            # Das ist ein Kommentar über eine gesamte Zeile xD
+        </pre>
         <p>
             Nach jeder Anweisung muss entweder eine neue Zeile beginnen, oder ein Semikolon stehen.
             Anweisungen können entweder das Ausführen von <a href="#functions">Funktionen</a> oder von <a
                 href="#operator-expressions">Operator-Anweisungen</a> sein.
             Operatoren sind Tokens, die eine bestimmte Wirkung vollbringen, also dazu fähig sind, die Daten, die
             mithilfe anderer Tokens gegeben werden, zu manipulieren.
-            Literale sind eine spezielle Form der Tokens, welche Informationen enthalten. Zahlen sind grundsätzlich immer Literale in FourFoil, wobei sie den
+            Literale sind eine spezielle Form der Tokens, welche Informationen enthalten. Zahlen sind grundsätzlich
+            immer Literale in FourFoil, wie auch strings, also Zeichen innerhalb zweier Anführungszeichen.
             Andere Token sind z.B. für die Definition von Variablen zuständig und werden <em>Schlüsselwörter</em>
             genannt.
         </p>
@@ -100,7 +98,10 @@
             abgeschlossen wird.
         </p>
         <pre>
-            var (number_1, number_2, number_3) int; var (one, two) = 3
+            var (number_1,
+                number_2,
+                number_3) int
+            var (one, two) = 3
         </pre>
         <h2 id="pointers">Pointer</h2>
         <p>
@@ -109,7 +110,7 @@
             Änderung der Variable, auf die der Pointer zeigt.
             Syntaktisch wird ein Pointer mit dem Schlüsselwort "<em>poi</em>" erstellt, worauf ein Name folgt, der
             den gleichen Voraussetzungen wie ein Variablenname entsprechen muss.
-            Nach dem Namen folgt der (auch gern abstrakte) Datentyp der Variable, auf die der Pointer zeigen soll.
+            Nach dem Namen folgt der (möglicherweise abstrakte) Datentyp der Variable, auf die der Pointer zeigen soll.
             Sollte der Pointer auf nichts (<em>null</em>) zeigen dürfen, muss das anhand eines Fragezeichens nach dem
             Datentypen symbolisiert werden. Danach kann dem Pointer eine Adresse zugewiesen werden, wobei es sich um
             eine Hexadezimalzahl handelt. Um die Adresse einer Variable zu bekommen, gibt man den Variablennamen mit dem
@@ -126,13 +127,198 @@
             poi my_pointer_2 int?
             poi (pon, pot) string? = null
         </pre>
+        <h2 id="operators">Operatoren</h2>
+        <p>
+            Operatoren folgen keinem speziellen Muster, sondern werden in der folgenden Tabelle aufgeführt:
+        </p>
         <h2 id="operator-expressions">Operator-Anweisungen</h2>
-        <h2 id="functions">Funktionen</h2>
-        <h2 id="namespaces">Namespaces</h2>
-        <h2 id="datatypes">Datentypen</h2>
+        <p>
+            Operator-Anweisungen sind Operatoren mit anschließender Zuweisung, und somit eine Kurzschreibweise der
+            Kombination zweier Operatoren.
+        </p>
+        <table>
+            <tr>
+                <th>Operator-Anweisung</th>
+                <th>Funktion</th>
+            </tr>
+            <tr>
+                <td>a += b</td>
+                <td>Zu der Variable a wird b addiert</td>
+            </tr>
+            <tr>
+                <td>a -= b</td>
+                <td>Von a wird b subtrahiert</td>
+            </tr>
+            <tr>
+                <td>a *= b</td>
+                <td>a wird mit b multipliziert</td>
+            </tr>
+            <tr>
+                <td>a /= b</td>
+                <td>a wird durch b geteilt</td>
+            </tr>
+            <tr>
+                <td>a %= b</td>
+                <td>Der Rest, der bei einer Ganzzahldivision von a mit b rauskommt, wird in a gespeichert</td>
+            </tr>
+            <tr>
+                <td>a **= b</td>
+                <td>a wird b-mal mit sich selbst multipliziert</td>
+            </tr>
+            <tr>
+                <td>++a</td>
+                <td>Kurzform für <em>a += 1</em></td>
+            </tr>
+            <tr>
+                <td>--a</td>
+                <td>Kurzform für <em>a -= 1</em></td>
+            </tr>
+            <tr>
+                <td>a++</td>
+                <td>Gibt einen neuen Wert zurück, der dem alten Wert von a entspricht, und erhöht a um 1</td>
+            </tr>
+            <tr>
+                <td>a--</td>
+                <td>Gibt einen neuen Wert zurück, der dem alten Wert von a entspricht, und senkt a um 1</td>
+            </tr>
+        </table>
+        <p>
+            Neben den numerischen Anweisungen gibt es auch noch bitweise Operator-Anweisungen, welche das Verhalten der
+            einzelnen Bits einer Zahl ändern, und hier aufgeführt sind:
+        </p>
+        <table>
+            <tr>
+                <th>Operator-Anweisung</th>
+                <th>Funktion</th>
+            </tr>
+            <tr>
+                <td>a &= b</td>
+                <td>Führt für jedes Bit der beiden Parameter a und b die UND-Überprüfung durch, und speichert das
+                    Ergebnis in a.
+                </td>
+            </tr>
+            <tr>
+                <td>a |= b</td>
+                <td>Führt für jedes Bit der beiden Parameter a und b die ODER-Überprüfung durch, und speichert das
+                    Ergebnis in a.
+                </td>
+            </tr>
+            <tr>
+                <td>a ^= b</td>
+                <td>Führt für jedes Bit der beiden Parameter a und b die EXKLUSIV-ODER-Überprüfung durch, und speichert
+                    das Ergebnis in a.
+                </td>
+            </tr>
+            <tr>
+                <td>a <<= b</td>
+                <td>verschiebt die Bits von a um b Stellen nach links (entspricht einer Multiplikation mit 2**b), ist
+                    aber wesentlich effizienter.
+                </td>
+            </tr>
+            <tr>
+                <td>a >>= b</td>
+                <td>Verschiebt die Bits von a um b Stellen nach rechts (entspricht einer Division mit 2**b), ist aber
+                    wesentlich effizienter.
+                </td>
+            </tr>
+        </table>
         <h2 id="arrays">Arrays</h2>
+        <p>
+            Arrays sind Datenstrukturen, die mehrere Werte des gleichen Typen enthalten. Man kann sie als einfache
+            Listen ansehen, oder als Vektoren der Mathematik, da mit ihnen genau die gleichen arithmetischen Operationen
+            durchgeführt werden können wie mit mathematischen Vektoren.
+        </p>
+        <p>
+            Erstellt werden Arrays über das Schlüsselwort <em>arr</em>, auf welches dann der Name des Arrays folgt, dann
+            der (möglicherweise abstrakte) Datentyp und letztendlich die Anzahl an Elementen, die maximal drin
+            gespeichert werden können soll, also
+            quasi die Größe des Arrays. Falls diese anfangs nicht bekannt sein sollte, kann stattdessen auf eine
+            komplexere <a href="#datastructures">Datenstruktur</a> zurückgegriffen werden, bei welcher die Größe
+            flexibel ist, die dafür aber natürlich auch mehr Speicher in Anspruch nehmen.
+        </p>
+        <pre>
+            arr mein_array string 6
+            arr dein_array pointer 42
+        </pre>
+        <p>
+            Anonyme Arrays sind Arrays ohne Namen, die ausschließlich als Parameter übergeben werden können. sie werden
+            durch die folgende Syntax erstellt. Da sie keinen Namen besitzen, ist es dem Programmierer nicht möglich,
+            sie in dem Aktionsradius (z.B. der Funktion) nach der Erstellung anzusprechen.
+        </p>
+        <pre>
+            [string "", ""]
+        </pre>
+        <p>
+            Anonyme Arrays können allerdings auch genutzt werden, um ein Array direkt zu initialisieren. Dazu schreibt
+            man das Schlüsselwort <em>arr</em>, den Namen des Arrays, das Gleichheitszeichen und daraufhin ein anonymes
+            Array, welches zugewiesen werden soll. Die Syntax ist wie folgt.
+        </p>
+        <pre>
+            arr dein_array = [int 1, 5]
+        </pre>
+        <p>
+            Mit Arrays kann auch gerechnet werden, jedoch sind die Rechenmethoden eingeschränkt.
+            Der Betrag eines Arrays ist die Wurzel aus den Quadraten der einzelnen Elemente, vorausgesetzt, die Elemente
+            sind alle vom Typen <em>number</em>.
+        </p>
+        <p>
+            Bei der Addition/Subtraktion zweier Arrays werden die Werte nach ihrem Index addiert/subtrahiert. Sollten
+            die Arrays unterschiedlich groß sein, wird in der Rechnung vom größten Array ausgegangen, und das kleinere
+            Array durch eins der passenden Größe ersetzt, welches dann mit Nullen am Ende aufgefüllt wird.
+        </p>
+        <section>
+            <h3>Addition</h3>
+            <pre>
+                [int 1, 2] + [int 3, 3, -1]
+                # Ergebnis: [int 4, 5, -1]
+            </pre>
+        </section>
+        <section>
+            <h3>Subtraktion</h3>
+            <pre>
+                [int 1, 2] - [int 3, 3, -1]
+                # Ergebnis: [int -2, -1, 1]
+            </pre>
+        </section>
+        <p>
+            Bei skalarer Multiplikation werden alle Elemente des Arrays mit dem skalaren Multiplikator multipliziert.
+            Da sich hier auch nicht die Länge des Arrays nicht ändern kann, kann man auch hier eine direkte Zuweisung
+            machen.
+        </p>
+        <section>
+            <h3>Skalare Multiplikation</h3>
+            <pre>
+                [int 1, 2] * 3
+                # Ergebnis: [int 3, 6]
+                arr mein_array = [int 1, 2]
+                mein_array *= 3
+            </pre>
+        </section>
+        <section>
+            <h3>Skalarprodukt</h3>
+            <pre>
+                [int 1, 2] * [int 3, 3, -1]
+                # Ergebnis: 9
+            </pre>
+        </section>
+        <section>
+            <h3>Vektorprodukt</h3>
+            <pre>
+                [int 1, 2] ** [int 3, 3, -1]
+                # Ergebnis: ...
+            </pre>
+        </section>
         <h2 id="structs">Structs</h2>
-    </section>
+        <p>...</p>
+        <h2 id="functions">Funktionen</h2>
+        <p>...</p>
+        <h2 id="namespaces">Namespaces</h2>
+        <p>...</p>
+        <h2 id="datatypes">Datentypen</h2>
+        <p>...</p>
+        <h2 id="datastructures">Datenstrukturen</h2>
+        <p>...</p>
+    </article>
 </main>
 <footer>
     <span> Copyright 2022</span>
