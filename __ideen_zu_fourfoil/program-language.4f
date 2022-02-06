@@ -312,3 +312,21 @@ Ein Pointer soll standardmäßig nicht null sein können, außer, sein Typ wird 
   ```pointer p string?``` bzw. ```pointer p string? = "Hallo"; p = null```
 
 Bei einem typedef kann als Attribut "returns" angegeben werden, mit einer bereits erstellten Variable dahinter, die quasi der Standardwert sein soll. Dadurch wird verhindert, dass immer wieder sowas wie eine ".value()"-Methode aufgerufen werden muss, falls ein type wie eine Erweiterung eines anderen gewertet werden sollte.
+
+
+2e3 steht für 2 * 10**3
+math:e ist die Eulersche Zahl
+math:pi ist PI
+
+Anstatt mehrmals mit == vergleichen zu müssen, kann man auch die im type-Namespace vorhandene "equals(...)"-Methode verwenden, die beliebig viele Parameter entgegennimmt, und alle überprüft, ob sie mit der Ursprungs-variable übereinstimmen.
+Überschreibbare Operatoren in einer Typdeklaration:
+    a == b
+    |a|
+
+```operator ==(type other){}```
+
+Code aus anderen Sprachen kann in anonyme Funktionen eingefügt werden. Syntax:
+    (){```js
+               let x = ''
+               document.getElementById('hallo')
+       ```}
