@@ -202,6 +202,12 @@
                 <td>$a</td>
                 <td>Gibt die Adresse von a zurück</td>
             </tr>
+            <tr>
+                <td>Wissenschaftler-Flex</td>
+                <td>a°b</td>
+                <!--suppress GrazieInspection -->
+                <td>Gibt a*10**b zurück</td>
+            </tr>
         </table>
         <!--         Boolesche Operatoren -->
         <table>
@@ -671,12 +677,14 @@
                 age: 42, size_in_cm: 180
             }
         </pre>
+        <!--        Zugriff-->
         <p>
             Auf die Werte eines Structs kann man mit einem Punkt und dann dem Namen des Attributs zugreifen.
         </p>
         <pre>
             var x = mein_struct.attribut
         </pre>
+        <!--        Anonyme Structs-->
         <p>
             Anonyme structs sind structs ohne Namen und ohne Datentyp. Sie werden durch geschweifte Klammern erstellt.
             Sie können als einzige direkt einem struct ohne Datentypen zugewiesen werden.
@@ -703,10 +711,12 @@
                 Anweisung2()
             }
         </pre>
+        <!--        Anonyme Funktionen-->
         <p>
             Anonyme Funktionen, oder auch Lambda-Funktionen genannt, haben keinen Namen. Sie können einer neu erstellten
             Funktion alternativ zum Codeblock zugewiesen werden. Dazu schreibt man anstatt der geschweiften Klammern ein
-            Gleichheitszeichen und dahinter die Anonyme Funktion.
+            Gleichheitszeichen und dahinter die Anonyme Funktion. Dabei müssen allerdings die anonyme Funktion und auch
+            die zu erstellende Funktion die gleichen Parameter haben.
             Erstellt werden anonyme Funktionen durch normale Klammern, in denen alle Parameter mit Kommata getrennt
             aufgezählt werden, und dann folgt der Codeblock in geschweiften Klammern.
         </p>
@@ -714,6 +724,29 @@
             fun deinStruct.deineFunktion() = (){
                 return 1
             }
+        </pre>
+        <!--        Code Injection-->
+        <p>
+            In Funktionen kann Code aus anderen Sprachen eingefügt werden. Dazu schreibt man direkt nach der
+            geschweiften Klammer-auf drei <code>`</code>, den Namen der Sprache (eine Liste mit allen unterstützten
+            Sprachen folgt), einen Zeilenumbruch, den Code und schließlich wieder drei <code>`</code>.
+            In geschweiften Klammern können in dieser Code-Injektion Ausdrücke angegeben werden.
+        </p>
+        <pre>
+            fun eineFun(){```js
+                let x = 'hallo'
+                console.log(x)
+            ```
+            }
+
+            # Auch in anonymen Funktionen möglich
+            Anweisung((){```python
+                def einsFunktionLul():
+                    print("Hallo Welt")
+                    return 0
+                einsFunktionLul()
+            ```
+            })
         </pre>
         <h2 id="namespaces">Namespaces</h2>
         <p>...</p>
