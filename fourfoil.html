@@ -115,8 +115,7 @@
             den gleichen Voraussetzungen wie ein Variablenname entsprechen muss.
             Nach dem Namen folgt der (möglicherweise abstrakte) Datentyp der Variable, auf die der Pointer zeigen soll.
             Sollte der Pointer auf nichts (<code>null</code>) zeigen dürfen, muss das anhand eines Fragezeichens nach
-            dem
-            Datentypen symbolisiert werden. Danach kann dem Pointer eine Adresse zugewiesen werden, wobei es sich um
+            dem Datentypen symbolisiert werden. Danach kann dem Pointer eine Adresse zugewiesen werden, wobei es sich um
             eine Hexadezimalzahl handelt. Um die Adresse einer Variable zu bekommen, gibt man den Variablennamen mit dem
             Adressenoperatoren "<code>$</code>" davor an.
         </p>
@@ -129,7 +128,7 @@
         <pre>
             var myVariable = 15
             ptr my_pointer = $myVariable
-            ptr my_pointer_2 int?
+            ptr my_other_pointer int?
             ptr (pon, pot) string? = null
         </pre>
         <h2 id="constants">Konstanten und globale Variablen</h2>
@@ -701,15 +700,66 @@
             Sie werden über das Schlüsselwort <code>fun</code> erstellt, worauf optional der zu erweiternde
             typedef mit einem Punkt und obligatorisch der Name der Funktion folgen. Nach dem Namen stehen in Klammern
             Variablen, Pointer oder sonstige Parameter.
+            Auch hier muss wieder gekennzeichnet werden, sollte ein Pointer-Parameter nullable sein.
+            Parameter können obligatorisch gemacht werden, indem ein Ausrufezeichen an den Datentypen angehangen wird.
+            Sollte dies bei einem nullable-Pointer sein, ist die Reihenfolge des Fragezeichens und des Ausrufezeichens
+            egal.
             Danach kann eine neue Funktion definiert werden, indem einfach nur in geschweiften Klammern Anweisungen
             folgen. Funktionen müssen immer einen Wert zurückgeben. Dieser Wert kann mit dem Schlüsselwort
             <code>return</code> angegeben werden, ist standardmäßig aber immer 0.
         </p>
         <pre>
-            fun meine_funktion(var zahl int, var name string){
-                Anweisung1()
-                Anweisung2()
+            fun Car.erweiterteFunktion(){
+                doSomething()
             }
+
+            fun meine_funktion(var zahl int!, var name string, ptr pointer int?!){
+                zahl++
+                doSomething()
+                print(name, pointer)
+            }
+        </pre>
+        <p>
+            Funktionen werden durch ihren Bezeichner (ihren Namen) aufgerufen, von Klammern gefolgt, in denen alle
+            nötigen Argumente für die jeweiligen Parameter in der von der Definition vorgegebenen Reihenfolge angegeben
+            werden.
+            Alternativ kann beim expliziten Aufruf auch auf die Reihenfolge verzichtet werden, indem auf einen
+            Parameternamen folgend mit einem Gleichheitszeichen das Argument zugewiesen wird.
+            Alle Parameter, denen kein Argument im Funktionsaufruf zugewiesen wird, werden auf ihren spezifischen in der
+            <a href="#datatypes">Datentyp-Definition</a> festgelegten Standardwert gesetzt. Bei Pointern ist es null.
+        </p>
+        <pre>
+            var x = 5
+            meine_funktion(42, "Thomas Lieven", $x)
+            meine_funktion( name="Heinz Harald", zahl = 42, pointer=null )
+
+            meine_funktion()
+                # ERROR: 'zahl' ist obligatorisch.
+                # ERROR: 'pointer' ist obligatorisch.
+        </pre>
+        <p>
+            Ellipsen-notation wird genutzt, um eine variable Anzahl an Parametern darzustellen. Sie kann ausschließlich
+            beim letzten Parameter einer Funktion angewendet werden, welcher ein Array sein muss.
+            Alle Argumente, die über diese Schreibweise übergeben werden, müssen entweder den gleichen Typen haben, oder
+            werden alle automatisch in string umgeformt.
+        </p>
+        <pre>
+            deine_funktion( var name string, arr zahlen int... ) {
+                print(zahlen.length)
+                print(zahlen[1])
+                doSomething()
+            }
+
+            deine_funktion( "Daniel", 3, 42, 1337, 707)
+                # Die Zahlen können im Code dann als [int 3, 42, 1337, 707] verwendet werden.
+
+            unsere_Funktion(arr werte string...) {
+                print(werte.length)
+                doSomething()
+            }
+
+            unsere_Funktion(3, "Hallo", 42)
+                # wird im Funktionskörper zu [string "3", "Hallo", "42"]
         </pre>
         <!--        Anonyme Funktionen-->
         <p>
@@ -724,6 +774,15 @@
             fun deinStruct.deineFunktion() = (){
                 return 1
             }
+
+            fun eineFunktion(fun andere(var x int)) {
+                andere(3)
+            }
+
+            eineFunktion((var x int){
+                x++
+                print("x ist jetzt: ", x)     #  x ist jetzt: 4
+            })
         </pre>
         <!--        Code Injection-->
         <p>
