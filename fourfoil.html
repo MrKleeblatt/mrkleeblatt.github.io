@@ -41,12 +41,14 @@
     <h1 id="getting-started">Und los geht's</h1>
     <article>
         <p>
-            Jedes Programm startet in einer <code>main.ff</code>-Datei, oder einer <code>main(arr args arr&lt;string>){}</code>-<a
+            Jedes Programm startet in einer <code>main.ff</code>-Datei, oder einer <code>main(arr args
+            string){}</code>-<a
                 href="#functions">Funktion</a>.
             Programme bestehen aus Tokens. Tokens der Sprache FourFoil sind:
         </p>
         <!--         Token-Liste -->
         <ul>
+            <li></li>
             <li></li>
             <li></li>
         </ul>
@@ -58,11 +60,22 @@
             Mehrere Tokens in einer bestimmten Syntax zusammen formieren Anweisungen.
             Kommentare jedoch werden zwar mit einer Abfolge an Tokens eingeleitet, gehören allerdings nicht zu
             Anweisungen, da sie vom Compiler komplett ignoriert werden, und nur zum Verständnis des Programmierers
-            beitragen. Eingeleitet wird ein Kommentar mit einem Rautenzeichen und einem darauffolgenden Leerzeichen.
+            beitragen. Der Code zeigt, was und wie es passiert, die Kommentare erklären, wieso. Eingeleitet wird ein
+            Kommentar mit einem Rautenzeichen und einem darauffolgenden Leerzeichen.
             Alles, was in dieser Zeile folgt, gilt nun als Kommentar und wird vom Compiler ignoriert.
+            Für mehrzeilige Kommentare können drei aufeinanderfolgende Rautenzeichen genutzt werden. Alle
+            darauffolgenden Zeilen bis zu den nächsten drei Rautenzeichen sind Kommentare.
         </p>
         <pre>
             # Das ist ein Kommentar über eine gesamte Zeile xD
+
+            someCode();
+
+            ###
+            Das ist eine -
+            nein, das sind zwei,
+            ja sogar drei Zeilen an Kommentaren :)
+            ###
         </pre>
         <!--        Literale usw.-->
         <p>
@@ -86,11 +99,13 @@
             Nach dem Namen kann entweder direkt ein Wert mittels des Zuweisungsoperatoren "<code>=</code>" zugewiesen
             werden, oder der (nicht-abstrakte) <a href="#datatypes">Datentyp</a> der Variable angegeben werden, worauf
             auch wieder eine Zuweisung folgen darf.
+            Syntax: var _name_ = _value_; var _name_ _datatype_
         </p>
         <pre>
             var myVariable = 5
             var my_variable string
             var one int = 1
+            my_variable = "Hallo :)"
         </pre>
         <p>
             Um Schreibarbeit zu verkürzen, ist es außerdem möglich, mehrere Variablen des gleichen Types oder Wertes mit
@@ -106,6 +121,12 @@
                 number_3) int
             var (one, two) = 3
         </pre>
+        <p>
+            Variablen existieren immer nur in dem Anwendungsbereich, in dem sie erstellt wurden. Wird eine Variable
+            innerhalb einer Schleife oder Funktion erstellt, ist sie nach Beendung dieser wieder zerstört. Um das zu
+            verhindern, kann eine Variable global gemacht werden. Damit wird sie einmal erstellt, und kann, nachdem der
+            Anwendungsbereich beendet wurde, dennoch durch Pointer erreicht werden (siehe unten).
+        </p>
         <h2 id="pointers">Pointer</h2>
         <p>
             Pointer sind eine spezielle Variante von Variablen, die jedoch keinen Wert selbst enthalten, sondern auf
@@ -149,6 +170,24 @@
             global const var z = 42
             y = $z      # Compiler-Fehler. Konstanten können nicht geändert werden.
         </pre>
+        <p>
+            Der <a href="#datatypes">Datentyp</a> <code>any</code> ist ausschließlich Pointern vorenthalten. Ein Pointer
+            diesen Types kann auf einen Wert beliebigen Datentyps zeigen. Will mann allerdings z.B. aus einer Funktion
+            einen Wert beliebigen Datentyps zurückgeben, muss eine globale Variable erstellt werden, zu der ein Pointer
+            mit dem Datentypen "any" zeigt.
+        </p>
+        <pre>
+            fun doSomething(){
+                global var result = "lol"
+                return $result
+            }
+            # must be a ptr
+            ptr myResult any
+            myResult = doSomething()
+        </pre>
+        <p>
+            Auch legitim ist die
+        </p>
         <h2 id="operators">Operatoren</h2>
         <p>
             Operatoren folgen keinem speziellen Muster, sondern werden in der folgenden Tabelle aufgeführt:
@@ -206,6 +245,12 @@
                 <td>a°b</td>
                 <!--suppress GrazieInspection -->
                 <td>Gibt a*10**b zurück</td>
+            </tr>
+            <tr>
+                <td>Fakultät</td>
+                <td>a!</td>
+                <!--suppress GrazieInspection -->
+                <td>Gibt die mathematische Fakultät von a zurück</td>
             </tr>
         </table>
         <!--         Boolesche Operatoren -->
@@ -490,9 +535,9 @@
         <p>
             Ene weitere Kurzform überprüft einen Pointer auf null. Man schreibt den Pointer, dann den Sonst-Operator
             <code>||</code> und danach den Wert, der zurückgegeben werden soll, falls der vorige Pointer null war.
-            Um die Dinge noch kürzer zu machen, kann man, wenn es um <a href="#structs">Structs</a> geht, folgendes
+            Um die Dinge noch kürzer zu machen, kann man, wenn es um <a href="#maps">Maps</a> geht, folgendes
             machen.
-            Sei "a" ein struct beliebigen Typs mit den Attributen "b" und "c". Wird nun b auf null überprüft, ist es
+            Sei "a" eine map beliebigen Typs mit den Attributen "b" und "c". Wird nun b auf null überprüft, ist es
             nach dem Sonst-Operator nicht mehr notwendig, a noch einmal zu erwähnen, sondern es kann mit ".c"
             direkt weitergehen. Diese Schreibweise entspricht (a.b == null? a.c: a.b)
         </p>
@@ -580,7 +625,7 @@
         </p>
         <pre>
             arr mein_array string 6
-            arr dein_array pointer 42
+            arr dein_array ptr<> 42
             var x = dein_array[0]
         </pre>
         <!--        Anonyme Arrays-->
@@ -606,7 +651,24 @@
             Mit Arrays kann auch gerechnet werden, jedoch sind die Rechenmethoden eingeschränkt.
             Der Betrag eines Arrays ist die Wurzel aus den Quadraten der einzelnen Elemente, vorausgesetzt, die Elemente
             sind alle vom Typen <code>number</code>.
+            Die Kombination durch den Kombinationsoperatoren <code>..</code> erstellt ein neues Array, welches aus den
+            beiden zu kombinierenden Arrays besteht. Da Strings nur eine spezielle Form von Arrays sind, können auch sie
+            durch den Kombinationsoperator zusammengesetzt werden.
         </p>
+        <section>
+            <h3>Kombination</h3>
+            <pre>
+                [string "ab", "cd", "ef"] .. [string "gh", "ij"]
+                # Ergebnis: [string "ab", "cd", "ef", "gh", "ij"]
+            </pre>
+        </section>
+        <section>
+            <h3>Betrag</h3>
+            <pre>
+                |[int 4, 3]|
+                # Ergebnis: 5
+            </pre>
+        </section>
         <p>
             Bei der Addition/Subtraktion zweier Arrays werden die Werte nach ihrem Index addiert/subtrahiert. Sollten
             die Arrays unterschiedlich groß sein, wird in der Rechnung vom größten Array ausgegangen, und das kleinere
@@ -654,42 +716,63 @@
                 # Ergebnis: ...
             </pre>
         </section>
-        <h2 id="structs">Structs</h2>
+        <!--        Funktionen und Attribute bei Arrays-->
+        <hr/>
+        <pre>int length</pre>
+        <span>Die Länge des Arrays. Immer eins mehr als der letzt Index des Arrays.</span>
+        <hr/>
+        <pre>fun array.find(fun condition(var element thisType)) bool</pre>
+        <span>Findet das erste Element im Array mit der gegebenen Bedingung, und gibt einen Pointer zu jenem Element zurück.</span>
+        <hr/>
+        <pre>fun array.()</pre>
+        <span>Findet das erste Element im Array mit der gegebenen Bedingung, und gibt einen Pointer zu jenem Element zurück.</span>
+        <h2 id="maps">Maps</h2>
         <p>
-            Structs sind eine andere Form, um Daten zu strukturieren.
-            Sie werden mit dem Schlüsselwort <code>struct</code> erstellt, worauf der Name und der
+            Maps sind eine andere Form, um Daten zu strukturieren.
+            Sie werden mit dem Schlüsselwort <code>map</code> erstellt, worauf der Name und der
             <a href="#datatypes">Datentypen</a> folgen.
             Danach muss eine Zuweisung folgen, sollte der Typ nicht nullable sein. Dabei müssen alle nicht bereits
-            zugewiesenen Werte des struct-Typen im struct-Design zugewiesen werden.
+            zugewiesenen Werte des map-Typen im map-Design zugewiesen werden.
             Zunächst wird der Name der zu überschreibenden Variable geschrieben, danach ein Doppelpunkt und der
             zuzuweisende Wert, welcher den in der Datentypdefinition festgelegten Typen haben muss.
             Verwirrt? Ich auch.
-            Es können auch noch weitere Werte ergänzt werden, wobei da allerdings noch angegeben werden muss, ob es sich
-            um eine Variable, Konstante, Array, usw. handelt.
+            Es können auch noch weitere Werte nach der üblichen Definition ergänzt werden, wobei da allerdings noch
+            angegeben werden muss, ob es sich um eine Variable, Konstante oder Array, usw. handelt.
             Die Attribute können durch ein Komma voneinander getrennt werden, um sie in einer Zeile schreiben zu können.
         </p>
         <pre>
-            struct mein_struct human?
-            struct dein_struct human = {
+            map meine_map human?
+            map deine_map human = {
                 name: "Heinz Harald"
-                var ist_klug: true
                 age: 42, size_in_cm: 180
+                # Es ist immer ratsam, die restlichen, ergänzten Attribute
+                # mit einem Kommentar vom Rest zu abzutrennen.
+                var ist_klug: true
+            }
+            map eineMap human? = {
+                name: ""
+                fun extraFunktion = (){}
             }
         </pre>
         <!--        Zugriff-->
         <p>
-            Auf die Werte eines Structs kann man mit einem Punkt und dann dem Namen des Attributs zugreifen.
+            Auf die Werte einer Map kann man mit einem Punkt und dann dem Namen des Attributs zugreifen.
+            Jede Map hat automatisch die Attribute "size", "foreach()"
         </p>
         <pre>
-            var x = mein_struct.attribut
+            var x = meine_map.attribut
+            var length = meine_map.length
+            meine_map.foreach((element){
+                print("Hallo " .. element)
+            })
         </pre>
-        <!--        Anonyme Structs-->
+        <!--        Anonyme Maps-->
         <p>
-            Anonyme structs sind structs ohne Namen und ohne Datentyp. Sie werden durch geschweifte Klammern erstellt.
-            Sie können als einzige direkt einem struct ohne Datentypen zugewiesen werden.
+            Anonyme maps sind maps ohne Namen und ohne Datentyp. Sie werden durch geschweifte Klammern erstellt.
+            Sie können als einzige direkt einer map ohne Datentypen zugewiesen werden.
         </p>
         <pre>
-            struct x = {
+            map x = {
                 var name: "Max Mustermann"
                 var age: 43
             }
@@ -698,19 +781,23 @@
         <p>
             Funktionen sind Codeblöcke, die zusammengefasst und vom restlichen (nicht globalen) abgeschlossen werden.
             Sie werden über das Schlüsselwort <code>fun</code> erstellt, worauf optional der zu erweiternde
-            typedef mit einem Punkt und obligatorisch der Name der Funktion folgen. Nach dem Namen stehen in Klammern
-            Variablen, Pointer oder sonstige Parameter.
+            Datentyp als in Klammern geschriebene Variablendeklaration mit einem Punkt danach und obligatorisch der Name
+            der Funktion folgen. Nach dem Namen stehen in Klammern Variablen, Pointer oder sonstige Parameter.
             Auch hier muss wieder gekennzeichnet werden, sollte ein Pointer-Parameter nullable sein.
             Parameter können obligatorisch gemacht werden, indem ein Ausrufezeichen an den Datentypen angehangen wird.
             Sollte dies bei einem nullable-Pointer sein, ist die Reihenfolge des Fragezeichens und des Ausrufezeichens
             egal.
+            Optional ist auch die Angabe eines Rückgabewert-Datentypen. Sollte dieser spezifisch abgegeben werden
+            müssen, kann dies durch einen Doppelpunkt nach der Klammer-zu der Parameter und darauffolgend dem jeweiligen
+            Datentypen erfolgen.
             Danach kann eine neue Funktion definiert werden, indem einfach nur in geschweiften Klammern Anweisungen
             folgen. Funktionen müssen immer einen Wert zurückgeben. Dieser Wert kann mit dem Schlüsselwort
             <code>return</code> angegeben werden, ist standardmäßig aber immer 0.
         </p>
         <pre>
-            fun Car.erweiterteFunktion(){
+            fun (var myCar Car).erweiterteFunktionMitReturnType() : string{
                 doSomething()
+                return "lol"
             }
 
             fun meine_funktion(var zahl int!, var name string, ptr pointer int?!){
@@ -771,7 +858,7 @@
             aufgezählt werden, und dann folgt der Codeblock in geschweiften Klammern.
         </p>
         <pre>
-            fun deinStruct.deineFunktion() = (){
+            fun deineMap.deineFunktion() = (){
                 return 1
             }
 
@@ -809,6 +896,15 @@
         </pre>
         <h2 id="namespaces">Namespaces</h2>
         <p>...</p>
+        <pre>
+            namespace name {
+                # everything in here is global
+                global {
+                    var dumb = true
+                    ptr useless = $dumb
+                }
+            }
+        </pre>
         <h2 id="datatypes">Datentypen</h2>
         <p>...</p>
         <h2 id="datastructures">Datenstrukturen</h2>
