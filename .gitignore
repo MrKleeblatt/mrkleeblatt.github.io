@@ -1,4 +1,4 @@
-/__ideen_zu_fourfoil/
+/__ideen_zu_fourfoil/*.md
 /.idea/
 /.git/
 .gitignore

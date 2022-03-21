@@ -1,0 +1,359 @@
+Arrays sind ein Zusammenschluss an Variablen (siehe )  ```var <name>[<count>] <datatype>``` bzw. ```var <name> = [<inhalt>]```
+Konstanten werden mit dem Schlüsselwort "const" erstellt.
+  Syntax:  ```const <name> = <value>```
+# steht für "hex", danach kommt eine Zahl.
+
+Bisherige Datentypen sind: int, byte, boolean, float, complex, string
+Man kann allgemein immer neue Datentypen mit "typedef" definieren.
+  Syntax: ```typedef <name> <typeType> {...}```
+  typeTypes hierbei können alle anderen Typen sein, z.B. int, byte, pointer, array oder list, jedoch nicht "type" selbst.
+
+Listen werden mit dem Schlüsselwort "list" erstellt.
+  Syntax: ```list <name>``` bzw. ```list <name> <listType>```
+  Hierbei ist listType z.B. eine LinkedList oder eine ArrayList.
+  Für Listen gibt es die Funktionen "add()", "remove()", usw.
+  Listen kümmern sich nicht um den Datentypen, der in ihnen gespeichert wird (im Gegensatz zu Arrays).
+  Das klonen einer list ist ganz einfach mit der Funktion "clone()" zu veranstalten. Sollten die beiden Listen nicht
+  den gleichen listType besitzen, muss die Funktion in der typedef der zu klonenden list überschrieben werden.
+  Sollte die Funktion eine list klonen, welche wiederum eine andere list, oder einen pointer enthält, wird auch dieses mit geklont.
+
+Allgemein gilt immer: Werden nach einer Definition die geschwungenen Klammern weggelassen, folgt nur eine einzige Anweisung.
+
+import Window from 4foil.Window
+import IO     from System.IO
+import Util   from 4foil.Util
+import Code1  from ..\Datei1
+import Code2  from .\Datei2
+
+print("Hi")
+
+var §x = 1                        // <-- int wird automatisch erkannt
+var §test : double = 3,14159265   // Datentyp wird auf double gesetzt. Sollte er nicht explizit angegeben werden, wird float genommen.
+var §y : char                     // eine Variable vom Typen "char" wird erstellt
+§y = 'b'
+§x = #4 + §test
+var num<16> =
+
+array int arri[2]
+arri[0] = 5
+array String arri2[3][4]
+delete arri[]
+delete arri2[][]
+array relation arri3 = {
+  [0] "one"  { 1.0 <= x < 2}       --> [0] ist die Stelle im Array
+  [1] "two"  {2 <= x < 30}         --> "two" ist der Name der Stelle
+  [2] "three"{ x = 5 }             --> in den {} steht der Wertebereich. Keine Zahl darf doppelt aufgeführt werden.
+ }
+var String result = arriRel[](4.6)
+
+delete §x
+delete §test
+delete §y
+
+object lustig = Lol()
+delete lustig
+
+
+
+
+//
+//  Funktionen werden mit dem Schlüsselwort "fn" erstellt. Syntax: ```fn <sichtb.mod.> <Object>.<name>(<Parameter>) = {<inhalt>}```
+//    bzw. ```fn <name>() = {<inhalt>}```
+//  Sichtbarkeitsmodifizierer sind die gleichen wie in Java
+//  Wenn eine Funktion, eine variable, eine Klasse oder sonst irgendwas von einem Objekt abhängig ist, wird ein "Object." davorgeschieben.
+//		Sollte die Klasse des zu behandelnden Objektes bereits feststehen, wird anstatt Object die jeweilige Klasse eingetragen
+//  Um genauer unterscheiden zu können, aus welchem package welche Funktion / welches Objekt ist, wird das package, und dann ein : vor
+//    die Funktion geschrieben. Beispiel: ```var x = Math:sin(90°)```
+//  Rückgabewerte: Sollte ein Rückgabewert vorhanden sein, wird er wie in Java durch "return" eingeleitet, danach kommt die Variable, die
+//    zurückgegeben wird. Mit einem Komma getrennt kann man auch mehrere Werte zurückgeben lassen.
+//    Wenn der Rückgabewert nicht existieren soll, wird als Rückgabewert "null" angegeben.
+//    Will man eine Funktion, eine Schleife oder eine Anweisung vorzeitig verlassen, kann man entweder einen return machen, oder "skip"
+//  Override: Will man eine Funktion überschreiben, kann man das mit dem Wort "override" machen. Vor die neue Funktion wird dieses Wort geschoben.
+//    Das in Java vorkommenden Wort "super" wird in 4foil durch "parent" ersetzt, weil das einfach viel logischer ist.
+//  Exceptions werden mit dem Schlüsselwort "throw" geworfen. Sollte die Gefahr bestehen, dass eine Funktion eine Exception wirft, wird wie bei
+//    Java ein "throws <Exception>" dahinter geschrieben, um die Exception weiterzureichen. Sollte die Exception einfach ignoriert werden, wird
+//    anstatt throws "ignore" geschrieben. Eine Exception kann man einfach erstellen, indem man eine Datei namens "Exceptions.4f" erstellt.
+//    In dieser Datei werden dann die verschiedenen Exceptions als Funktionen deklariert, denen man natürlich auch Parameter mitgeben kann.
+//    Sie werden allerdings groß geschrieben.
+//  try-catch ist einfacher als in Java, aber genauer als in JS: ```try{}catch(Exception, IOException){ Console.writeLine(IOException) }```
+//
+//  Klassen werden mit dem Schlüsselwort "class" erstellt. Zusammen mit dem Erstellen der Klasse, wird direkt der Standard-Konstruktor
+//    mit definiert. Wenn die Klammern hinter dem Namen weggelassen werden, gibt es den Standard-Konstruktor nicht mehr.
+//    Syntax: ```<sichtb.mod.> class <Name>() parent <parentClass> implements <interfaces> {<Inhalt>}```
+//    Sollte es noch andere Konstruktoren geben, werden sie wie folgt erstellt:
+//    Syntax: ```<sichtb.mod.> class <Name>() parent <parentClass> implements <interfaces> {
+//                ctor(<Parameter>){<Inhalt>}
+//                ctor(<Parameter>){<Inhalt>}
+//                <Inhalt>
+//              }```
+//    Konstruktoren können nicht von einem Object abhängig sein, weshalb eine Angabe dessen unnötig wäre. Sie heißen immer "ctor",
+//    wodurch auch mehrere Konstruktoren möglich wären.
+//
+//  Interfaces sind (anders als in Java) Klassen ohne Objektorientierung. Man kann darin Funktionen und Variablen usw. definieren, aber alles
+//    darin ist statisch. Man kann von Interfaces auch kein Objekt erstellen, sondern nur das Interface in eine Klasse implementieren.
+//    Dabei wird einfach am Anfang der Datei ein "implements" angehängt. In Interfaces sind alle Funktionen abstrakt gemacht, somit wird der
+//    Funktionenkopf zwar schon vorgegeben, aber der Funktionenkörper noch nicht definiert.
+//  Abstrakte Klassen gibt es in 4foil auch, sie heißen hier jedoch "parent class", da sie immer von einer anderen Klasse beerbt werden.
+//    Parent-Klassen werden über die Schlüsselwörter "parent class" Erstellt.
+//    Syntax: ```<sichtb.mod.> parent class <Name> implements <interfaces>```
+//    Sie selber können nicht von anderen Klassen erben, da sie die oberste aller Klassen sein müssen, können aber Interfaces implementieren.
+//    Der Vorteil dieser Parent-Klassen ist jedoch, dass Kinder nicht auf dem üblichen Weg erben, sondern eine Klasse, die von der Parent-Klasse
+//    erbt, anstatt des Schlüsselwortes "class" den Namen der Parent-Klasse trägt. Von einer Parent-Klasse kann keine Instanz erstellt werden,
+//    es gibt also auch keinen Standard-Konstruktor oder sonstige Konstruktoren.
+//
+
+protected class Lol () parent Lachen implements Gesichtsausdruck {
+   ctor(String str) print(str)
+   ctor(String str, int x)
+   ctor(String str, int x, double d)
+   return null
+}
+
+public interface Animal{
+   breath() {
+      doSomething()
+      doSomethingAgain()
+      }
+
+   }
+
+parent class Dog implements Animal {
+
+
+   public bark() print("wau")
+}
+
+//
+//  Schleifen und Anweisungen: ähnlich wie in Java bzw. C#
+//  Will man den ternären Operator verwenden, schreibt man ein Fragezeichen vor die Bedingung und ein Fragezeichen nach der Bedingung.
+//  Danach schreibt man die Anweisung, die bei TRUE ausgeführt werden soll, dann einen Doppelpunkt und dann die Anweisung, die bei FALSE ausgeführt werden soll.
+//
+
+if (true) {}else{}
+if (true) unless (true) if (true) {}
+
+if( true ){} other( true ){} other( true ){} else{}
+
+for( int i = 0; i< 9; i++ ){}
+
+while( true ){}
+
+do while( true ){}
+
+foreach( <array> ){}      --> führt die Schleife für jede Stelle im Array einmal aus
+foreach( int §i < X ){}      --> Führt die Schleife Xmal aus
+
+try { <code> } catch() { <code> }
+
+
+//
+//  Arithmetische  Operationen: Addition (+), Subtraktion (-), Multiplikation (*), Division (/), Potenzieren (^),
+//                              Wurzel ziehen (_/ ), Betrag ziehen (| |), Modulo (%)
+//  Des Weiteren können Funktionen gebildet werden, die z.B. den Sinus oder Gegensinus bilden: ``var §temp = sin(30)``
+//  und ``var §temp = sin^-1(30°)``
+//
+//  Boolesche Operatoren:   Negation (!), Und (AND), Oder (OR), Xor (XOR), nicht und (NAND), nicht oder (NOR)
+//  Operatoren zur Manipulation von Bits: Umkehrung (!), Und (&), Oder (|)
+//    Linksverschiebung (>>) [0b11101110 = 0b10111011 >> 2], Rechtsverschiebung (<<)
+//  Vergleiche: gleich (==), ungleich (!=), kleiner als (<), größer als (>), kleiner gleich (<=), größer gleich (>=), exakt gleich (===),
+//    konvertiert gleich (~=), exakt ungleich (!==), konvertiert ungleich (!~=)
+//    --> Der Unterschied zwischen gleich und exakt gleich ist, dass bei einem Objekt der Vergleich "==" auf den Inhalt, der "==="
+//        jedoch auf die Referenz prüft. "~=" würde auch bei ``5 ~= "5"`` true zurückgeben.
+``5 == 5`` => true
+``5 === 5`` => true
+``object1 == clone1`` => true
+``object1 === clone1`` => false
+//  Weitere Operatoren:
+//    von-bis (x:y) <--liefert ein Array zurück mit den Zahlen der Ganzzahlenreihe von x bis y. x und y müssen int sein.
+//
+//
+
+var int §x = sin(30)
+§x = sin^-1(30°)
+var double §y = #3
+var float §result = _/(6+3) - 3 : 1/3 + 1
+
+
+
+
+
+//
+//  Objekten kann immer ein tag angehangen werden. Das ganze wird ähnlich wie eine Funktion gemacht, jedoch mit {} anstatt ()
+//    Syntax: <object>.tag{}
+//  Dieser Tag kann immer durch ein "@" aufgerufen werden. Jedes Objekt mit diesem Tag führt dann die folgende Funktion aus.
+//    Syntax: @<tag>.<Funktion>
+//
+
+
+//
+//  Vordefinierte Klassen:
+//
+
+Window( int width, int height,  )
+
+
+//
+//  Vordefinierte Funktionen
+//
+println( String value )
+Bit.changeBit( int bitPoint, boolean value )
+as( Klasse, Objekt ).<Funktion>
+
+
+
+
+
+
+
+//  Beispiel-Code:
+
+var boolean x = true
+
+if (x == true) {
+  println("YES") }
+other (x == false) {
+  println("NO") }
+foreach(int i < 25){
+  println("JAWOHLLL 25mal")
+  }
+
+
+
+Notiz:
+   Bilder laden... wie?
+   Format:
+
+   var table §format = {
+   "format": "PNG",
+   "size": 16
+   }
+   object bild = Picture( "C:/User/Ich/neu.png", §format )
+
+
+   Wenn ein String in C# modifiziert wird, wir die Instanz gelöscht und eine neue erzeugt. Das geht jedoch sehr auf die Performance, weshalb es in C# die StringBuilder-Klasse gibt. In 4f sollen Strings immer nach den StringBuilder-Prinzip funktionieren. Das spart einen großen Haufen Rechenleistung.
+   Die Ordnerstruktur des Comilers ist wie in MC aufgebaut. Falls ihr die .dat-Dateien kennt... Die will ich nutzen, da es eine sehr effiziente Speicherung vorallem von Definitionsdaten ist. Außerdem soll man seine eigenen packages auch direkt in die Sprache implementieren können. Dafür soll es einen Ordner "packs" oder "packages" im Programmordner geben
+   Dann kann eine IDE, aber auch der Compiler direkt, die PATH-Variable gleich mitnutzen.
+
+   # soll normalerweise immer für "int" stehen, aber wenn eine Funktion aufgerufen oder eine Variablenname festgelegt wird, soll es dabei helfen, nicht extrem viele Variablen erstellen zu müssen. Z.B.:
+   for(int i = 0; i <= 25; i++){
+      Object.setSymbol#i( "X" )
+   }
+
+
+   In 4foil sollen Dateien viel besser verarbeitet werden können als in Java (die Dateiverarbeitung ist da halt einfach Müll). Hierzu gibt es die Klasse "File", in der Funktionen zum Lesen, Schreiben, Umbenennen, Verschieben, Erstellen und Löschen von Dateien sind. Außerdem gibt es boolean-Funktionen zum Überprüfen z.B. der Länge der in der Datei gespeicherten Zeichen, der Größe der Datei, und viele andere has...-Funktionen. Funktionen anderer primitiver Datentypen sind auch vorhanden, so z.B. vom Typen int, wenn man die Stelle eines bestimmten Zeichens haben will:
+
+      fn Car.getCharPos(char toFind) public = {
+
+         array char temp[] = this.toCharArray()
+         list int charPos
+
+         for( int i = 0; i< this.length(); i++ ){
+            if( temp[i] == toFind ){
+               charPos.Add(i)
+            }
+         }
+         return charPos
+      }
+
+   In einem String soll ein Zeilenumbruch klar erkennbar sein. Sollte eine Datei eingelesen und in einen String umgewandelt werden, wird ein Zeilenumbruch in den String übernommen, und nicht, wie in Java, ignoriert!
+   Strings sind standartmäßig ohne Formatierung in Unicode-codes. Sollte man einen formatierten String haben wollen, schreibt man vor die "" ein f. Syntax: ```var String §str = f"test"``` bzw. ```var String str = f"test"```
+
+   Im Atom-Package soll Autocomplete vorhanden sein. Wenn man eine neue Klasse erstellt, sollen direkt alle Funktionen, die überschrieben werden müssen, aufgeschrieben werden.
+
+   In der Library FourFoils sollen Kindklassen immer in einem Ordner sein, der den gleichen Namen trägt wie ihre Elternklasse. Diese Elternklasse soll im gleichen Ordner sein wie der gleichnamige Ordner. Dadurch lässt sich nachvollziehen, von wem geerbt wird.
+
+   Imports werden standartmäßig grau dargestellt, außer, sie werden nicht genutzt, dann sind sie auch noch durchgestrichen.
+   Wenn eine Variable erstellt, aber nicht genutzt wird, wird sie grau dargestellt
+
+
+Multithreading:
+  Threads können wie in Java entweder über `extends Thread` oder über anonyme Klassen erstellt werden. Hierbei müssen in jedem Fall die
+   `load()`- und die `tick()`-Methode überschrieben werden. `load()` wird beim Starten des Threads einmalig ausgeführt, `tick()` dauerhaft.
+   Gestartet werden Threads durch `thread.start()`, beendet durch `thread.close()`. Man kann auf die Fertigstellung eines Threads immer mit
+   `thread.await()` warten, oder vor die Start-Methode ein `await` setzen (Sinn? Keine Ahnung.)
+
+
+
+
+Um Text vor dem Compilen zu ersetzen, kann man "define" verwenden. Im Gegensatz zu "const" ist define nur
+eine Ersetzung, also ist der Datentyp vollkommen Wurst.
+
+synchronized {}
+synchronized () {}
+
+Variablen sind nicht gleich ihrem Wert. In FourFoil wird eine Variable bzw. ihre Referenz/Pointer mit dem
+Variablennamen angegeben, ihr Wert jedoch mit einem "$variablenName".
+
+
+In einem Block kann ein Namespace dauerhaft angesprochen werden, was besonders nützlich für Webentwicklung ist. Sollte man dies in einem Objekt-Kontext verwenden, muss bei jeder Objekt-Methode ``this.`` davorgesetzt werden.
+
+Referenzen sind in fourfoil ein eigener Typ, also weder Objekt, noch Variable, noch Array oder Funktion. Sie werden als "ref" angegeben. Syntax: ```ref name = eine_Variable_oder_sonst_was_xD```
+
+
+switch-case soll viel einfacher und logischer sein als in C. Die Syntax sieht wie folgt aus:
+  ```
+  switch(<variable>){
+    case(<value>) expr()
+    case(<value>){
+      expr()
+      expr()
+      case(<value>)
+    }
+    default expr()
+  }```
+Man kann also auch aus einem case heraus einen anderen Case ansprechen, wie man auch eine function ausführen würde.
+Oprional kann nach der Variable im switch()-Kopf eine function-Referenz angegeben werden (z.B. "TYPE::equals"), mit der die Variable geprüft werden soll.
+  Syntax: ```switch(<variable>, TYPE::equals){/*...*/}```
+
+
+Ein Pointer soll standardmäßig nicht null sein können, außer, sein Typ wird mit einem Fragezeichen angegeben. Syntax:
+  ```pointer p string?``` bzw. ```pointer p string? = "Hallo"; p = null```
+
+Bei einem typedef kann als Attribut "returns" angegeben werden, mit einer bereits erstellten Variable dahinter, die quasi der Standardwert sein soll. Dadurch wird verhindert, dass immer wieder sowas wie eine ".value()"-Methode aufgerufen werden muss, falls ein type wie eine Erweiterung eines anderen gewertet werden sollte.
+
+
+2°3 steht für 2 * 10**3
+math:e ist die Eulersche Zahl
+math:pi ist PI
+
+Anstatt mehrmals mit == vergleichen zu müssen, kann man auch die im type-Namespace vorhandene "equals(...)"-Methode verwenden, die beliebig viele Parameter entgegennimmt, und alle überprüft, ob sie mit der Ursprungs-variable übereinstimmen.
+Überschreibbare Operatoren in einer Typdeklaration:
+    a == b
+    |a|
+
+```operator ==(type other){}```
+
+Andere Sprachen können über drei ` als Code-String eingefügt werden. Eine Liste mit allen unterstützten Sprachen liegt vor.
+Code aus anderen Sprachen kann in anonyme Funktionen eingefügt werden. Syntax:
+    (){```js
+               let x = ''
+               document.getElementById('hallo')
+       ```}
+Der Exit-Code des Programms ist auch der Rückgabewert der anonymen Funktion.
+
+
+#######################################################################################################################
+
+# Namespaces und Typen können auch die gleichen Namen haben. Kann aber verwirrend sein...
+
+namespace Window {
+	typedef Window struct{
+		var name string
+		fun doSomething(){
+			console.log("Hello")
+		}
+	}
+
+	fun foo(){
+		console.err("Oh no")
+	}
+}
+
+Window::foo()			# output "Oh no"
+var window Window::Window = {name: "My Window"}
+window.doSomething()	# output "Hello"
+
+using Window
+foo()					# output "Oh no"
+var window Window = {name: "My Window"}
+window.doSomething()	# output "Hello"

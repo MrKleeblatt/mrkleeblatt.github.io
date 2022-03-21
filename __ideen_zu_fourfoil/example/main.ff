@@ -1,0 +1,31 @@
+# Kommentar
+
+###
+Code, der nicht in der Hauptbiblio
+you can import other code files or classes that are not in the main library
+you always have to name the import with "as"
+if you want to import packages from websites you can tell the compiler in the package.yml where to find them
+###
+
+import test.ff as test
+import folder.test.ff as ftest
+import html as html
+
+# if you want to use a namespace in the entire document and don't want to always write "namespace.function()", just write
+# "using <namespace>" and you're done and can just use the function without mentioning the namespace
+using html
+
+var html = parse("./index.html")
+arr elements = [string "<p>Hallo Welt</p>", "\n"]
+var x = 1 + #fff - 0 * .7 / 1.2 + 1b
+var z string = 'raw string without \n "escaping"'
+
+public global const ptr toZ = $z
+private var s string = f"{4}"
+fun injected = (){
+```js
+console.log('')
+```
+}
+
+injected()
