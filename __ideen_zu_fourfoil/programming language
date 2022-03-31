@@ -1,4 +1,3 @@
-Arrays sind ein Zusammenschluss an Variablen (siehe )  ```var <name>[<count>] <datatype>``` bzw. ```var <name> = [<inhalt>]```
 Konstanten werden mit dem Schlüsselwort "const" erstellt.
   Syntax:  ```const <name> = <value>```
 # steht für "hex", danach kommt eine Zahl.
@@ -27,12 +26,9 @@ import Code2  from .\Datei2
 
 print("Hi")
 
-var §x = 1                        // <-- int wird automatisch erkannt
-var §test : double = 3,14159265   // Datentyp wird auf double gesetzt. Sollte er nicht explizit angegeben werden, wird float genommen.
-var §y : char                     // eine Variable vom Typen "char" wird erstellt
-§y = 'b'
-§x = #4 + §test
-var num<16> =
+var x = 1                        // <-- int wird automatisch erkannt
+var test double = 3.14159265   // Datentyp wird auf double gesetzt. Sollte er nicht explizit angegeben werden, wird float genommen.
+x = #a4 + test
 
 array int arri[2]
 arri[0] = 5

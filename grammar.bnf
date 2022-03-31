@@ -1,2 +1,48 @@
 # Grammar four CJ
-Program = expression | 
+# All Tokens:
+(*
+
+var
+arr
+ptr
+map
+fun
+if
+else
+while
+for
+return
+IDENTIFIERS
+INTEGER LITERALS
+HEXADECIMAL LITERALS
+FLOATING POINT LITERALS
+STRING LITERALS
+END OF FILE
+(
+)
+[
+]
+{}
+,
+;
+.
+:
++
+-
+*
+/
+=
++=
+-=
+*=
+/=
+!
+&
+|
+++
+--
+!=
+=?
+?
+
+*)

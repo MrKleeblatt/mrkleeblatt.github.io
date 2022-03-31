@@ -23,7 +23,7 @@
     <h1>Allgemein</h1>
     <article>
         <p>
-           ...
+            ...
         </p>
     </article>
 
@@ -150,7 +150,7 @@
         <h2 id="constants">Konstanten und globale Variablen</h2>
         <p>
             Variablen und Pointer existieren nur in ihrem Codeblock, also z.B. nur in der
-            <a href="#functions">Funktion</a> , Datei, oder <a href="#loops">Schleife</a> , in der sie erstellt wurden.
+            <a href="#functions">Funktion</a> , Datei, oder <a href="#loops">Schleife</a>, in der sie erstellt wurden.
             Sollte man eine Variable danach auch noch verwenden wollen, kann sie global erstellt werden. Dazu setzt man
             vor das <code>var</code>-Schlüsselwort noch ein <code>global</code>.
         </p>
@@ -159,11 +159,16 @@
             zugewiesen werden. Wie auch bei globalen Variablen schreibt man bei Konstanten das Schlüsselwort vor die
             Definition der Variable oder des Pointers. Das Schlüsselwort hierbei ist <code>const</code>.
         </p>
+        <p>
+            Allgemein kann nach einem <code>global</code>- oder <code>const</code>-Schlüsselwort auch der Bezeichner
+            <code>var</code> weggelassen werden, da er automatisch ergänzt wird.
+        </p>
         <pre>
             global var x int
+            global y int
             const ptr y = $x
             global const var z = 42
-            y = $z      # Compiler-Fehler. Konstanten können nicht geändert werden.
+            y = $z      # Compiler-Error. Konstanten können nicht geändert werden.
         </pre>
         <p>
             Der <a href="#datatypes">Datentyp</a> <code>any</code> ist ausschließlich Pointern vorenthalten. Ein Pointer
@@ -620,7 +625,7 @@
         </p>
         <pre>
             arr mein_array string 6
-            arr dein_array ptr<> 42
+            arr dein_array ptr&lt;int> 42
             var x = dein_array[0]
         </pre>
         <!--        Anonyme Arrays-->
