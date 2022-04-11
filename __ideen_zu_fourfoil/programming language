@@ -353,3 +353,6 @@ using Window
 foo()					# output "Oh no"
 var window Window = {name: "My Window"}
 window.doSomething()	# output "Hello"
+
+import NAMESPACE from URL
+ifdef NAMESPACE {}
